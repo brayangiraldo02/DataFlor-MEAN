@@ -49,6 +49,7 @@
   
   .footerDevelopers a:hover {
     text-decoration: underline; /* Subraya los enlaces dentro del contenido de desarrolladores al pasar el cursor sobre ellos */
+    color: rgb(207, 20, 176); /* Color de texto para los enlaces dentro del contenido de desarrolladores al pasar el cursor sobre ellos */
   }
   
   .footerLegal {
