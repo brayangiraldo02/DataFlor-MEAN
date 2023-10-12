@@ -8,21 +8,8 @@ interface Developer {
 
 //Se crea un arreglo de desarrolladores
 const developers: Developer[] = [//Se crea un arreglo de tipo Developer
-
-  {name:"Cindy Marcela Jiménez Saldarriaga", github:"https://github.com/C1ndyJS"},
-  {name:"Julian Andres Corral Gomez", github:"https://github.com/JulianCorralG"},
-  {name:"Santiago Jaramillo Duque", github:"https://github.com/santiagoaramillo"},
-  {name:"Adrián Fernando Gaitán Londoño", github:"https://github.com/adriancho91s"},
-  {name:"Juan Manuel Morales Santacruz", github:"https://github.com/jmorales284"},
-  {name:"Daniel Toro soto", github:"https://github.com/pausa11"},
-  {name:"Jefferson David Arteaga Bedoya", github:"https://github.com/JeffersonArteaga"},
-  {name:"Juan Diego Rincon Franco", github:"https://github.com/Di3go0-0"},
-  {name:"Brayan Cataño Giraldo", github:"https://github.com/brayangiraldo02"},
-  {name:"Stiven Castro Soto", github:"https://github.com/stivcs"},
-  {name:"Julian David Bolivar Agudelo", github:"https://github.com/davidbolivar12"},
-  {name:"Juan David Garcia Arce", github:"https://github.com/Juandagarc"},
-  {name:"Juan David Gañan Marin", github:"https://github.com/JuanDavidGanan"},
-];
+{name:"Brayan Cataño Giraldo", github:"https://github.com/brayangiraldo02"}
+]
 
 //Se crea el componente
 @Component({//Se crea el decorador
