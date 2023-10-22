@@ -19,7 +19,7 @@ const sequelize = new Sequelize(
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    console.log('The connection to the database has been established successfully.');
   })
   .catch((err) => {
     console.log(dbConfig);

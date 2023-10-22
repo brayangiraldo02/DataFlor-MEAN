@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import * as flowerShop from "../controller/flowershops.controller.js"
+import * as users from "../controller/users.controller.js"
 
 const router = express.Router();
 
@@ -15,6 +16,20 @@ router.get("/", (req, res) => {
       flowerShopByName: "GET /flower-shops/name/:name",
       flowerShopByAddress: "GET /flower-shops/address/:address",
       flowerShopByPhone: "GET /flower-shops/phone/:phone",
+      createFlowerShop: "POST /flower-shops/create",
+      updateFlowerShopById: "PUT /flower-shops/update/:id"
+    },
+    users: {
+      Access: "The administrator can access all routes and the owner can access some routes.",
+      allUsers: "GET /users",
+      userById: "GET /users/:id",
+      userByUsername: "GET /users/username/:name",
+      userByFullName: "GET /users/fullName/:fullName",
+      userByPhone: "GET /users/phone/:phone",
+      userByRole: "GET /users/role/:role",
+      userByIdflowerShops: "GET /users/idflowerShops/:idflowerShops",
+      createUser: "POST /users/create",
+      updateUserById: "PUT /users/update/:id"
     },
     images: {
 
@@ -27,9 +42,6 @@ router.get("/", (req, res) => {
     },
     providers: {
 
-    },
-    users: {
-      
     }
   });
 });
@@ -52,7 +64,45 @@ router.get("/flower-shops/address/:address", flowerShop.getFlowerShopByAddress)
 // Obtain a flower shop by phone
 router.get("/flower-shops/phone/:phone", flowerShop.getFlowerShopByPhone)
 
-//----------------------------------------------------------------------------------------------
+// Create a new flower shop
+router.post("/flower-shops/create", flowerShop.createFlowerShop)
 
+// Update a flower shop by id
+router.put("/flower-shops/update/:id", flowerShop.updateFlowerShopById)
+
+//  ----------------------------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------------------------
+//User routes
+
+// Obtain all users
+router.get("/users", users.getUsers)
+
+// Obtain a user by id
+router.get("/users/:id", users.getUsersById)
+
+// Obtain a user by username
+router.get("/users/username/:name", users.getUsersByUsername)
+
+// Obtain a user by fullName
+router.get("/users/fullName/:fullName", users.getUsersByFullName)
+
+// Obtain a user by phone
+router.get("/users/phone/:phone", users.getUsersByPhone)
+
+// Obtain a user by role
+router.get("/users/role/:role", users.getUsersByRole)
+
+// Obtain a user by idflowerShops
+router.get("/users/idflowerShops/:idflowerShops", users.getUsersByIdflowerShops)
+
+// Create a new user
+router.post("/users/create", users.createUser)
+
+// Update a user by id
+router.put("/users/update/:id", users.updateUserById)
+
+//  ----------------------------------------------------------------------------------------------
 
 export default router;

@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-import sequelize from "../../config/db/database";
+import sequelize from "../../config/db/database.js";
 
 // CREATE TABLE Users (
 //   userID SERIAL PRIMARY KEY,
