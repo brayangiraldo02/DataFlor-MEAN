@@ -7,7 +7,30 @@ const router = express.Router();
 // Main route
 router.get("/", (req, res) => {
   res.status(200).json({ 
-    message: "Welcome to the DataFlor backend!"
+    Welcome_message: "Welcome to the DataFlor backend!",
+    flowerShops: {
+      Access: "Only admins can access this routes",
+      allFlowerShops: "GET /flower-shops",
+      flowerShopById: "GET /flower-shops/:id",
+      flowerShopByName: "GET /flower-shops/name/:name",
+      flowerShopByAddress: "GET /flower-shops/address/:address",
+      flowerShopByPhone: "GET /flower-shops/phone/:phone",
+    },
+    images: {
+
+    },
+    inventory: {
+
+    },
+    products: {
+
+    },
+    providers: {
+
+    },
+    users: {
+      
+    }
   });
 });
 
