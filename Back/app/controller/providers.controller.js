@@ -107,3 +107,53 @@ export const getProviderByState = async (req, res) => {
   }
 };
 
+// (POST)
+
+// Create a new provider
+export const createProvider = async (req, res) => {
+  try {
+    const Providers = await providers.create(req.body);
+
+    res.status(201).json(Providers);
+  } catch (error) {
+    res.status(400).json({message: "Error creating provider", error});
+  }
+};
+
+// (PUT)
+
+// Update a provider by id
+export const updateProviderById = async (req, res) => {
+  try {
+    const Providers = await providers.update(req.body, {
+      where: { id: req.params.id },
+    });
+
+    if (Providers == 0) {
+      return res.status(404).json({
+        message: "No provider found with that id"});
+    }
+
+    res.status(200).json(Providers);
+  } catch (error) {
+    res.status(400).json({message: "Error updating provider by id", error});
+  }
+};
+
+// Update a provider by name
+export const updateProviderByName = async (req, res) => {
+  try {
+    const Providers = await providers.update(req.body, {
+      where: { name: req.params.name },
+    });
+
+    if (Providers == 0) {
+      return res.status(404).json({
+        message: "No provider found with that name"});
+    }
+
+    res.status(200).json(Providers);
+  } catch (error) {
+    res.status(400).json({message: "Error updating provider by name", error});
+  }
+};

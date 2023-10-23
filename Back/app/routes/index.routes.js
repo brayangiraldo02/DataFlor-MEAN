@@ -37,6 +37,16 @@ router.get("/", (req, res) => {
       updateUserByUsername: "PUT /users/update/username/:name"
     },
     providers: {
+      Access: "All users can access these routes except PUTS and POST types.",
+      allProviders: "GET /providers",
+      providerById: "GET /providers/:id",
+      providerByName: "GET /providers/name/:name",
+      providerByPhone: "GET /providers/phone/:phone",
+      providerByAddress: "GET /providers/address/:address",
+      providerByState: "GET /providers/state/:state",
+      createProvider: "POST /providers/create",
+      updateProviderById: "PUT /providers/update/id/:id",
+      updateProviderByFullname: "PUT /providers/update/fullname/:name"
 
     },
     images: {
@@ -143,5 +153,16 @@ router.get("/providers/address/:address", providers.getProviderByAddress)
 
 // Obtain a provider by state
 router.get("/providers/state/:state", providers.getProviderByState)
+
+// Create a new provider
+router.post("/providers/create", providers.createProvider)
+
+// Update a provider by id
+router.put("/providers/update/id/:id", providers.updateProviderById)
+
+// Update a provider by fullname
+router.put("/providers/update/fullname/:name", providers.updateProviderByName)
+
+//----------------------------------------------------------------------------------------------
 
 export default router;
