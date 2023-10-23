@@ -10,12 +10,12 @@ import sequelize from "../../config/db/database.js";
 
 const providers = sequelize.define
 ("providers", {
-  providerID: {
+  providerid: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  fullName: {
+  fullname: {
     type: Sequelize.STRING(255),
     allowNull: false,
   },
@@ -25,6 +25,10 @@ const providers = sequelize.define
   },
   address: {
     type: Sequelize.STRING(255),
+    allowNull: false,
+  },
+  state: {
+    type: Sequelize.BOOLEAN,
     allowNull: false,
   },
 }, {

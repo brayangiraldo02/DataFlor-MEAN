@@ -10,12 +10,12 @@ import sequelize from "../../config/db/database";
 
 const products = sequelize.define
 ("products", {
-  productID: {
+  productid: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  productName: {
+  productname: {
     type: Sequelize.STRING(255),
     allowNull: false,
   },
@@ -25,6 +25,10 @@ const products = sequelize.define
   },
   price: {
     type: Sequelize.DECIMAL(12, 2),
+    allowNull: false,
+  },
+  state: {
+    type: Sequelize.BOOLEAN,
     allowNull: false,
   },
 }, {

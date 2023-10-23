@@ -9,13 +9,13 @@ import sequelize from "../../config/db/database.js";
 //   inventoryID INT NOT NULL
 // );
 
-const flowerShops = sequelize.define("flowerShops", {
-  idflowerShops: {
+const flowerShops = sequelize.define("flowershops", {
+  idflowershops: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  fullName: {
+  fullname: {
     type: Sequelize.STRING(255),
     allowNull: false,
   },
@@ -27,8 +27,12 @@ const flowerShops = sequelize.define("flowerShops", {
     type: Sequelize.STRING(15),
     allowNull: false,
   },
-  inventoryID: {
+  inventoryid: {
     type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  state: {
+    type: Sequelize.BOOLEAN,
     allowNull: false,
   },
 }, {
