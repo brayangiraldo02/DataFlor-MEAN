@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import * as flowerShop from "../controller/flowershops.controller.js"
 import * as users from "../controller/users.controller.js"
+import * as providers from "../controller/providers.controller.js"
 
 const router = express.Router();
 
@@ -80,10 +81,10 @@ router.put("/flower-shops/update/id/:id", flowerShop.updateFlowerShopById)
 // Update a flower shop by fullname
 router.put("/flower-shops/update/fullname/:name")
 
-//  ----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------
 
 
-// ----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------
 //User routes
 
 // Obtain all users
@@ -119,6 +120,28 @@ router.put("/users/update/id/:id", users.updateUserById)
 // Update a user by username
 router.put("/users/update/username/:name", users.updateUserByUsername)
 
-//  ----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------
+//Provider routes
+
+// Obtain all providers
+router.get("/providers", providers.getProviders)
+
+// Obtain a provider by id
+router.get("/providers/:id", providers.getProviderById)
+
+// Obtain a provider by name
+router.get("/providers/name/:name", providers.getProviderByName)
+
+// Obtain a provider by phone
+router.get("/providers/phone/:phone", providers.getProviderByPhone)
+
+// Obtain a provider by address
+router.get("/providers/address/:address", providers.getProviderByAddress)
+
+// Obtain a provider by state
+router.get("/providers/state/:state", providers.getProviderByState)
 
 export default router;
