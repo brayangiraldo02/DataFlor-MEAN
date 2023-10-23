@@ -125,6 +125,24 @@ export const getUsersByIdflowerShops = async (req, res) => {
   }
 };
 
+// Obtain a user by state
+export const getUsersByState = async (req, res) => {
+  try {
+    const user = await Users.findOne({
+      where: { state: req.params.state },
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        message: "No user found with that state"});
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({message: "Error getting user by state", error});
+  }
+};
+
 // (POST)
 
 // Create a new user

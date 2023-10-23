@@ -89,6 +89,24 @@ export const getFlowerShopByPhone = async (req, res) => {
   }
 };
 
+// Obtain a flower shop by state
+export const getFlowerShopByState = async (req, res) => {
+  try {
+    const flowerShop = await flowerShops.findOne({
+      where: { state: req.params.state },
+    });
+
+    if (!flowerShop) {
+      return res.status(404).json({
+        message: "No flower shop found with that state"});
+    }
+
+    res.status(200).json(flowerShop);
+  } catch (error) {
+    res.status(400).json({message: "Error getting flower shop by state"});
+  }
+};
+
 // (POST)
 
 // Create a flower shop
@@ -147,3 +165,4 @@ export const updateFlowerShopByFullname = async (req, res) => {
     res.status(400).json({message: "Error updating flower shop", error});
   }
 };
+
