@@ -1,7 +1,7 @@
 /* Se importa fuente descargada para el proyecto */
 @font-face {
   font-family: 'navFont';
-  src: url(../../assets/nav/fonts/HelveticaNeueRegular.otf);
+  src: url(../../../assets/nav/fonts/HelveticaNeueRegular.otf);
 }
 
 /* Estilos para el encabezado */
