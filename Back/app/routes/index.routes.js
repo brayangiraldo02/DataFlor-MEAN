@@ -33,6 +33,7 @@ router.get("/", (req, res) => {
       userByIdflowerShops: "GET /users/idflowerShops/:idflowerShops",
       userByState: "GET /users/state/:state",
       createUser: "POST /users/create",
+      login: "POST /login",
       updateUserById: "PUT /users/update/id/:id",
       updateUserByUsername: "PUT /users/update/username/:name"
     },
@@ -123,6 +124,9 @@ router.get("/users/state/:state", users.getUsersByState)
 
 // Create a new user
 router.post("/users/create", users.createUser)
+
+// Login a user
+router.post("/login", users.loginUser)
 
 // Update a user by id
 router.put("/users/update/id/:id", users.updateUserById)
