@@ -1,5 +1,6 @@
 import express from "express";
 import Users from "../models/users.models.js"
+import jwt from "jsonwebtoken";
 
 // (GET)
 
@@ -156,6 +157,24 @@ export const createUser = async (req, res) => {
     });
   } catch (error) {
     res.status(400).json({message: "Error creating user", error});
+  }
+};
+
+// Login a user
+export const loginUser = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = await Users.findOne({ where: { username, password } });
+
+    if (user) {
+      const token = jwt.sign({user}, "kaozDF", {
+        expiresIn: "30m"
+      });
+      res.send({ token });
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
