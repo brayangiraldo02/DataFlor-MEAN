@@ -39,7 +39,7 @@ export const getFlowerShopById = async (req, res) => {
 export const getFlowerShopByName = async (req, res) => {
   try {
     const flowerShop = await flowerShops.findOne({
-      where: { fullname: req.params.fullname },
+      where: { fullname: req.params.name },
     });
 
     if (!flowerShop) {

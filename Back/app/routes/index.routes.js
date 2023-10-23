@@ -31,6 +31,9 @@ router.get("/", (req, res) => {
       createUser: "POST /users/create",
       updateUserById: "PUT /users/update/:id"
     },
+    providers: {
+
+    },
     images: {
 
     },
@@ -38,9 +41,6 @@ router.get("/", (req, res) => {
 
     },
     products: {
-
-    },
-    providers: {
 
     }
   });
@@ -86,7 +86,7 @@ router.get("/users/:id", users.getUsersById)
 router.get("/users/username/:name", users.getUsersByUsername)
 
 // Obtain a user by fullName
-router.get("/users/fullName/:fullName", users.getUsersByFullName)
+router.get("/users/fullName/:fullname", users.getUsersByFullName)
 
 // Obtain a user by phone
 router.get("/users/phone/:phone", users.getUsersByPhone)

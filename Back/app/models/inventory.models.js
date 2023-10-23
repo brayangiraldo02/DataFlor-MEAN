@@ -1,4 +1,4 @@
-import Sequelize from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../../config/db/database.js";
 import flowerShops from "./flowershops.models.js";
 import Products from "./products.models.js";
@@ -18,12 +18,12 @@ import Providers from "./providers.models.js";
 const Inventory = sequelize.define
 ("inventory", {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   inventoryid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: flowerShops,
@@ -31,7 +31,7 @@ const Inventory = sequelize.define
     }
   },
   productid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Products,
@@ -39,11 +39,11 @@ const Inventory = sequelize.define
     }
   },
   quantity: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   providerid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Providers,
@@ -51,7 +51,8 @@ const Inventory = sequelize.define
     }
   },
   state: {
-    type: Sequelize.BOOLEAN,
+    type: DataTypes.BOOLEAN,
+    defaultValue: 0,
     allowNull: false
   },
 }, {
