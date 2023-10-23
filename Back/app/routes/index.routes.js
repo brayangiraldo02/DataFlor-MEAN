@@ -16,6 +16,7 @@ router.get("/", (req, res) => {
       flowerShopByName: "GET /flower-shops/name/:name",
       flowerShopByAddress: "GET /flower-shops/address/:address",
       flowerShopByPhone: "GET /flower-shops/phone/:phone",
+      flowerShopByState: "GET /flower-shops/state/:state",
       createFlowerShop: "POST /flower-shops/create",
       updateFlowerShopById: "PUT /flower-shops/update/id/:id",
       updateFlowerShopByFullname: "PUT /flower-shops/update/fullname/:name"
@@ -29,6 +30,7 @@ router.get("/", (req, res) => {
       userByPhone: "GET /users/phone/:phone",
       userByRole: "GET /users/role/:role",
       userByIdflowerShops: "GET /users/idflowerShops/:idflowerShops",
+      userByState: "GET /users/state/:state",
       createUser: "POST /users/create",
       updateUserById: "PUT /users/update/id/:id",
       updateUserByUsername: "PUT /users/update/username/:name"
@@ -66,6 +68,9 @@ router.get("/flower-shops/address/:address", flowerShop.getFlowerShopByAddress)
 // Obtain a flower shop by phone
 router.get("/flower-shops/phone/:phone", flowerShop.getFlowerShopByPhone)
 
+// Obtain a flower shop by state
+router.get("/flower-shops/state/:state", flowerShop.getFlowerShopByState)
+
 // Create a new flower shop
 router.post("/flower-shops/create", flowerShop.createFlowerShop)
 
@@ -101,6 +106,9 @@ router.get("/users/role/:role", users.getUsersByRole)
 
 // Obtain a user by idflowerShops
 router.get("/users/idflowerShops/:idflowerShops", users.getUsersByIdflowerShops)
+
+// Obtain a user by state
+router.get("/users/state/:state", users.getUsersByState)
 
 // Create a new user
 router.post("/users/create", users.createUser)
