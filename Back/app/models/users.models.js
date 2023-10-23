@@ -1,5 +1,6 @@
 import Sequelize from "sequelize";
 import sequelize from "../../config/db/database.js";
+import flowerShops from "./flowershops.models.js";
 
 // CREATE TABLE Users (
 //   userID SERIAL PRIMARY KEY,
@@ -13,35 +14,43 @@ import sequelize from "../../config/db/database.js";
 // );
 
 const Users = sequelize.define
-("Users", {
-  userID: {
+("users", {
+  userid: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    autoIncrement: true
   },
   username: {
     type: Sequelize.STRING(50),
-    allowNull: false,
+    allowNull: false
   },
   password: {
     type: Sequelize.STRING(255),
-    allowNull: false,
+    allowNull: false
   },
-  fullName: {
+  fullname: {
     type: Sequelize.STRING(255),
-    allowNull: false,
+    allowNull: false
   },
   phone: {
     type: Sequelize.STRING(15),
-    allowNull: false,
+    allowNull: false
   },
   role: {
     type: Sequelize.STRING(10),
-    allowNull: false,
+    allowNull: false
   },
-  idflowerShops: {
+  idflowershops: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    references: {
+      model: flowerShops,
+      key: "idflowershops"
+    }
+  },
+  state: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
   },
 }, {
   timestamps: false,

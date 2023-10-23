@@ -1,5 +1,6 @@
 import Sequelize from "sequelize";
 import sequelize from "../../config/db/database.js";
+import Products from "./products.models.js";
 
 // CREATE TABLE Images (
 //   imageID SERIAL PRIMARY KEY,
@@ -9,19 +10,23 @@ import sequelize from "../../config/db/database.js";
 // );
 
 const Images = sequelize.define
-("Images", {
-  imageID: {
+("images", {
+  imageid: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    autoIncrement: true
   },
-  productID: {
+  productid: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    references: {
+      model: Products,
+      key: "productid"
+    },
   },
-  imageURL: {
+  imageurl: {
     type: Sequelize.STRING(255),
-    allowNull: false,
+    allowNull: false
   },
 }, {
   timestamps: false,

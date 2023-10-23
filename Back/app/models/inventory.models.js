@@ -1,5 +1,8 @@
 import Sequelize from "sequelize";
 import sequelize from "../../config/db/database.js";
+import flowerShops from "./flowershops.models.js";
+import Products from "./products.models.js";
+import Providers from "./providers.models.js";
 
 // CREATE TABLE Inventory (
 //   id SERIAL PRIMARY KEY,
@@ -13,27 +16,43 @@ import sequelize from "../../config/db/database.js";
 // );
 
 const Inventory = sequelize.define
-("Inventory", {
+("inventory", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    autoIncrement: true
   },
-  inventoryID: {
+  inventoryid: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    references: {
+      model: flowerShops,
+      key: "inventoryid"
+    }
   },
-  productID: {
+  productid: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    references: {
+      model: Products,
+      key: "productid"
+    }
   },
   quantity: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    allowNull: false
   },
-  providerID: {
+  providerid: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    references: {
+      model: Providers,
+      key: "providerid"
+    }
+  },
+  state: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
   },
 }, {
   timestamps: false,

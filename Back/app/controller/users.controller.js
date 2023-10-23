@@ -8,14 +8,14 @@ export const getUsers = async (req, res) => {
   try {
     const user = await Users.findAll();
 
-    if (!user) {
+    if (!user | (user.length === 0)) {
       return res.status(404).json({
         message: "No users found"});
     }
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: "Error getting users"});
+    res.status(400).json({message: "Error getting users", error});
   }
 };
 
@@ -31,7 +31,7 @@ export const getUsersById = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: "Error getting user"});
+    res.status(400).json({message: "Error getting user", error});
   }
 };
 
@@ -49,7 +49,7 @@ export const getUsersByUsername = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: "Error getting user by username"});
+    res.status(400).json({message: "Error getting user by username", error});
   }
 };
 
@@ -57,7 +57,7 @@ export const getUsersByUsername = async (req, res) => {
 export const getUsersByFullName = async (req, res) => {
   try {
     const user = await Users.findOne({
-      where: { fullName: req.params.fullName },
+      where: { fullname: req.params.fullname },
     });
 
     if (!user) {
@@ -67,7 +67,7 @@ export const getUsersByFullName = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: "Error getting user by fullName"});
+    res.status(400).json({message: "Error getting user by fullName", error});
   }
 };
 
@@ -85,7 +85,7 @@ export const getUsersByPhone = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: "Error getting user by phone"});
+    res.status(400).json({message: "Error getting user by phone", error});
   }
 };
 
@@ -103,7 +103,7 @@ export const getUsersByRole = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: "Error getting user by role"});
+    res.status(400).json({message: "Error getting user by role", error});
   }
 };
 
@@ -111,7 +111,7 @@ export const getUsersByRole = async (req, res) => {
 export const getUsersByIdflowerShops = async (req, res) => {
   try {
     const user = await Users.findOne({
-      where: { idflowerShops: req.params.idflowerShops },
+      where: { idflowershops: req.params.idflowershops },
     });
 
     if (!user) {
@@ -121,7 +121,7 @@ export const getUsersByIdflowerShops = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: "Error getting user by idflowerShops"});
+    res.status(400).json({message: "Error getting user by idflowerShops", error});
   }
 };
 
@@ -150,7 +150,7 @@ export const updateUserById = async (req, res) => {
       where: { id: req.params.id },
     });
 
-    if (!user) {
+    if (!user | (user.length === 0)) {
       return res.status(404).json({
         message: "No user found with that id"});
     }

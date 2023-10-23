@@ -8,14 +8,14 @@ export const getFlowerShops = async (req, res) => {
   try {
     const flowerShop = await flowerShops.findAll();
 
-    if (!flowerShop) {
+    if (flowerShop.length === 0) {
       return res.status(404).json({
         message: "No flower shops found"});
     }
 
     res.status(200).json(flowerShop);
   } catch (error) {
-    res.status(400).json({message: "Error getting flower shops"});
+    res.status(400).json({message: "Error getting flower shops", error});
   }
 };
 
@@ -31,7 +31,7 @@ export const getFlowerShopById = async (req, res) => {
 
     res.status(200).json(flowerShop);
   } catch (error) {
-    res.status(400).json({message: "Error getting flower shop"});
+    res.status(400).json({message: "Error getting flower shop", error});
   }
 };
 
@@ -39,7 +39,7 @@ export const getFlowerShopById = async (req, res) => {
 export const getFlowerShopByName = async (req, res) => {
   try {
     const flowerShop = await flowerShops.findOne({
-      where: { name: req.params.name },
+      where: { fullname: req.params.fullname },
     });
 
     if (!flowerShop) {
@@ -49,7 +49,7 @@ export const getFlowerShopByName = async (req, res) => {
 
     res.status(200).json(flowerShop);
   } catch (error) {
-    res.status(400).json({message: "Error getting flower shop by name"});
+    res.status(400).json({message: "Error getting flower shop by name", error});
   }
 };
 
