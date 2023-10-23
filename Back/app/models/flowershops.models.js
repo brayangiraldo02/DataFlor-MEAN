@@ -1,4 +1,4 @@
-import Sequelize from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../../config/db/database.js";
 
 // CREATE TABLE flowerShops (
@@ -6,34 +6,36 @@ import sequelize from "../../config/db/database.js";
 //   fullName VARCHAR(255) NOT NULL,
 //   address VARCHAR(255) NOT NULL,
 //   phone VARCHAR(15) NOT NULL,
-//   inventoryID INT NOT NULL
+//   inventoryID INT NOT NULL,
+//   state BOOLEAN NOT NULL DEFAULT FALSE
 // );
 
 const flowerShops = sequelize.define("flowershops", {
   idflowershops: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
   fullname: {
-    type: Sequelize.STRING(255),
+    type: DataTypes.STRING(255),
     allowNull: false,
   },
   address: {
-    type: Sequelize.STRING(255),
+    type: DataTypes.STRING(255),
     allowNull: false,
   },
   phone: {
-    type: Sequelize.STRING(15),
+    type: DataTypes.STRING(15),
     allowNull: false,
   },
   inventoryid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   state: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false,
+    type: DataTypes.BOOLEAN,
+    defaultValue: 0,
+    allowNull: false
   },
 }, {
   timestamps: false,

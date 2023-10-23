@@ -1,4 +1,4 @@
-import Sequelize from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../../config/db/database.js";
 import Products from "./products.models.js";
 
@@ -12,12 +12,12 @@ import Products from "./products.models.js";
 const Images = sequelize.define
 ("images", {
   imageid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   productid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Products,
@@ -25,7 +25,7 @@ const Images = sequelize.define
     },
   },
   imageurl: {
-    type: Sequelize.STRING(255),
+    type: DataTypes.STRING(255),
     allowNull: false
   },
 }, {

@@ -1,4 +1,4 @@
-import Sequelize from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../../config/db/database.js";
 import flowerShops from "./flowershops.models.js";
 
@@ -10,46 +10,48 @@ import flowerShops from "./flowershops.models.js";
 //   phone VARCHAR(15) NOT NULL,
 //   role VARCHAR(10) NOT NULL CHECK (role IN ('admin', 'owner', 'employee')),
 //   idflowerShops INT,
+//   state BOOLEAN NOT NULL DEFAULT FALSE,
 //   FOREIGN KEY (idflowerShops) REFERENCES flowerShops(idflowerShops)
 // );
 
 const Users = sequelize.define
 ("users", {
   userid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   username: {
-    type: Sequelize.STRING(50),
-    allowNull: false
+    type: DataTypes.STRING(50),
+    allowNull: false,
+    unique: true
   },
   password: {
-    type: Sequelize.STRING(255),
+    type: DataTypes.STRING(255),
     allowNull: false
   },
   fullname: {
-    type: Sequelize.STRING(255),
+    type: DataTypes.STRING(255),
     allowNull: false
   },
   phone: {
-    type: Sequelize.STRING(15),
+    type: DataTypes.STRING(15),
     allowNull: false
   },
   role: {
-    type: Sequelize.STRING(10),
+    type: DataTypes.STRING(10),
     allowNull: false
   },
   idflowershops: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
+    type: DataTypes.INTEGER,
+    allowNull: true,
     references: {
       model: flowerShops,
       key: "idflowershops"
     }
   },
   state: {
-    type: Sequelize.BOOLEAN,
+    type: DataTypes.BOOLEAN,
     allowNull: false
   },
 }, {

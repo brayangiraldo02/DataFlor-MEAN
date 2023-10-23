@@ -17,7 +17,8 @@ router.get("/", (req, res) => {
       flowerShopByAddress: "GET /flower-shops/address/:address",
       flowerShopByPhone: "GET /flower-shops/phone/:phone",
       createFlowerShop: "POST /flower-shops/create",
-      updateFlowerShopById: "PUT /flower-shops/update/:id"
+      updateFlowerShopById: "PUT /flower-shops/update/id/:id",
+      updateFlowerShopByFullname: "PUT /flower-shops/update/fullname/:name"
     },
     users: {
       Access: "The administrator can access all routes and the owner can access some routes.",
@@ -29,7 +30,11 @@ router.get("/", (req, res) => {
       userByRole: "GET /users/role/:role",
       userByIdflowerShops: "GET /users/idflowerShops/:idflowerShops",
       createUser: "POST /users/create",
-      updateUserById: "PUT /users/update/:id"
+      updateUserById: "PUT /users/update/id/:id",
+      updateUserByUsername: "PUT /users/update/username/:name"
+    },
+    providers: {
+
     },
     images: {
 
@@ -38,9 +43,6 @@ router.get("/", (req, res) => {
 
     },
     products: {
-
-    },
-    providers: {
 
     }
   });
@@ -68,7 +70,10 @@ router.get("/flower-shops/phone/:phone", flowerShop.getFlowerShopByPhone)
 router.post("/flower-shops/create", flowerShop.createFlowerShop)
 
 // Update a flower shop by id
-router.put("/flower-shops/update/:id", flowerShop.updateFlowerShopById)
+router.put("/flower-shops/update/id/:id", flowerShop.updateFlowerShopById)
+
+// Update a flower shop by fullname
+router.put("/flower-shops/update/fullname/:name")
 
 //  ----------------------------------------------------------------------------------------------
 
@@ -86,7 +91,7 @@ router.get("/users/:id", users.getUsersById)
 router.get("/users/username/:name", users.getUsersByUsername)
 
 // Obtain a user by fullName
-router.get("/users/fullName/:fullName", users.getUsersByFullName)
+router.get("/users/fullName/:fullname", users.getUsersByFullName)
 
 // Obtain a user by phone
 router.get("/users/phone/:phone", users.getUsersByPhone)
@@ -101,7 +106,10 @@ router.get("/users/idflowerShops/:idflowerShops", users.getUsersByIdflowerShops)
 router.post("/users/create", users.createUser)
 
 // Update a user by id
-router.put("/users/update/:id", users.updateUserById)
+router.put("/users/update/id/:id", users.updateUserById)
+
+// Update a user by username
+router.put("/users/update/username/:name", users.updateUserByUsername)
 
 //  ----------------------------------------------------------------------------------------------
 

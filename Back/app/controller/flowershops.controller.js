@@ -39,7 +39,7 @@ export const getFlowerShopById = async (req, res) => {
 export const getFlowerShopByName = async (req, res) => {
   try {
     const flowerShop = await flowerShops.findOne({
-      where: { fullname: req.params.fullname },
+      where: { fullname: req.params.name },
     });
 
     if (!flowerShop) {
@@ -116,6 +116,27 @@ export const updateFlowerShopById = async (req, res) => {
     if (!flowerShop) {
       return res.status(404).json({
         message: "No flower shop found with that id"});
+    }
+
+    res.status(200).json({
+      message: "Flower shop updated successfully",
+      data: flowerShop,
+    });
+  } catch (error) {
+    res.status(400).json({message: "Error updating flower shop", error});
+  }
+};
+
+// Update a flower shop by Fullname
+export const updateFlowerShopByFullname = async (req, res) => {
+  try {
+    const flowerShop = await flowerShops.update(req.body, {
+      where: { fullname: req.params.name },
+    });
+
+    if (!flowerShop) {
+      return res.status(404).json({
+        message: "No flower shop found with that fullname"});
     }
 
     res.status(200).json({

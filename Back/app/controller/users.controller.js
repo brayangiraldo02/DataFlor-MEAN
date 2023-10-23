@@ -39,7 +39,7 @@ export const getUsersById = async (req, res) => {
 export const getUsersByUsername = async (req, res) => {
   try {
     const user = await Users.findOne({
-      where: { username: req.params.username },
+      where: { username: req.params.name },
     });
 
     if (!user) {
@@ -153,6 +153,27 @@ export const updateUserById = async (req, res) => {
     if (!user | (user.length === 0)) {
       return res.status(404).json({
         message: "No user found with that id"});
+    }
+
+    res.status(200).json({
+      message: "User updated successfully",
+      data: user,
+    });
+  } catch (error) {
+    res.status(400).json({message: "Error updating user", error});
+  }
+};
+
+// Update a user by username
+export const updateUserByUsername = async (req, res) => {
+  try {
+    const user = await Users.update(req.body, {
+      where: { username: req.params.name },
+    });
+
+    if (!user | (user.length === 0)) {
+      return res.status(404).json({
+        message: "No user found with that username"});
     }
 
     res.status(200).json({

@@ -1,34 +1,35 @@
-import Sequelize from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../../config/db/database";
 
 // CREATE TABLE Products (
 //   productID SERIAL PRIMARY KEY,
 //   productName VARCHAR(255) NOT NULL,
 //   description TEXT,
-//   price DECIMAL(12, 2) NOT NULL
+//   price DECIMAL(12, 2) NOT NULL,
+//   state BOOLEAN NOT NULL DEFAULT FALSE
 // );
 
 const products = sequelize.define
 ("products", {
   productid: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
   productname: {
-    type: Sequelize.STRING(255),
+    type: DataTypes.STRING(255),
     allowNull: false,
   },
   description: {
-    type: Sequelize.TEXT,
+    type: DataTypes.TEXT,
     allowNull: true,
   },
   price: {
-    type: Sequelize.DECIMAL(12, 2),
+    type: DataTypes.DECIMAL(12, 2),
     allowNull: false,
   },
   state: {
-    type: Sequelize.BOOLEAN,
+    type: DataTypes.BOOLEAN,
     allowNull: false,
   },
 }, {
