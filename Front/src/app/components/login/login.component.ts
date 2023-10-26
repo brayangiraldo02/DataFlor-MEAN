@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  public logo:string = '../../../assets/nav/img/dataflor.png'; //Se crea una variable para el logo.
 
   login(): void {
 
