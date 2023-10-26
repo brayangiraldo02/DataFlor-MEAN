@@ -1,0 +1,19 @@
+<div class="create-flowershop">
+  <h2>Crear Floristería</h2>
+  <form (ngSubmit)="createFlowerShop()" #flowerShopForm="ngForm">
+    <div>
+      <label for="fullname">Nombre:</label>
+      <input id="fullname" name="fullname" [(ngModel)]="flowerShop.fullname" required />
+    </div>
+    <div>
+      <label for="address">Dirección:</label>
+      <input id="address" name="address" [(ngModel)]="flowerShop.address" required />
+    </div>
+    <div>
+      <label for="phone">Teléfono:</label>
+      <input id="phone" name="phone" [(ngModel)]="flowerShop.phone" required />
+    </div>
+    <button type="submit">Crear Floristería</button>
+    <button routerLink="/flowershops">Volver</button>
+  </form>
+</div>

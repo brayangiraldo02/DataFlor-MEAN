@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { FlowershopsComponent } from './components/flowershops/flowershops.component';
+import { CreateFlowershopComponent } from './components/create-flowershop/create-flowershop.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,15 @@ import { FlowershopsComponent } from './components/flowershops/flowershops.compo
     CarouselComponent,
     LoginComponent,
     HomeComponent,
-    FlowershopsComponent
+    FlowershopsComponent,
+    CreateFlowershopComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

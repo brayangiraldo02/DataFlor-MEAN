@@ -30,7 +30,6 @@ const flowerShops = sequelize.define("flowershops", {
   },
   inventoryid: {
     type: DataTypes.INTEGER,
-    allowNull: false,
   },
   state: {
     type: DataTypes.BOOLEAN,
