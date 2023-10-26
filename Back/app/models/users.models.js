@@ -53,7 +53,6 @@ const Users = sequelize.define
   state: {
     type: DataTypes.BOOLEAN,
     defaultValue: 1,
-    allowNull: false
   },
 }, {
   timestamps: false,
