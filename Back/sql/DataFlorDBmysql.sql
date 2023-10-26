@@ -72,3 +72,5 @@ CREATE TABLE sales (
   CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES users(userid),
   CONSTRAINT fk_productid FOREIGN KEY (productid) REFERENCES products(productid)
 )
+
+INSERT INTO `users` (`userid`, `username`, `password`, `fullname`, `phone`, `role`, `idflowershops`, `state`) VALUES (NULL, 'ADMIN', '123', 'Brayan Giraldo', '3215884968', 'Admin', NULL, 'Activate');

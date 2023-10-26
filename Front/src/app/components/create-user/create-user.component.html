@@ -1,1 +1,39 @@
-<p>create-user works!</p>
+<app-nav></app-nav>
+<div class="create-user-container">
+  <h2>Create User</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" [(ngModel)]="user.username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+    </div>
+    <div class="form-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" [(ngModel)]="user.fullname" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" name="phone" [(ngModel)]="user.phone" required>
+    </div>
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" name="role" [(ngModel)]="user.role" required>
+        <option value="Dueño">Dueño</option>
+        <option value="Empleado">Empleado</option>
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="idflowershops">Flower Shop</label>
+      <select id="idflowershops" name="idflowershops" [(ngModel)]="user.idflowershops" required>
+        <option *ngFor="let shop of flowerShops" [value]="shop.idflowershops">{{ shop.fullname }}</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit">Create User</button>
+    <button routerLink="/users">Volver</button>
+  </form>
+</div>
