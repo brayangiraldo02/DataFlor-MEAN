@@ -45,10 +45,6 @@ const Users = sequelize.define
   idflowershops: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    references: {
-      model: flowerShops,
-      key: "idflowershops"
-    }
   },
   state: {
     type: DataTypes.BOOLEAN,
