@@ -21,7 +21,8 @@
         <td>{{ flowerShop.phone }}</td>
         <td>{{ flowerShop.state ? 'Activo' : 'Inactivo' }}</td>
         <td>
-          <button (click)="goToInventory(flowerShop.idflowershops)">Ver Inventario</button>
+          <button (click)="goToInventory(flowerShop.idflowershops)">Inventario</button>
+          <button (clic)="goToSales(flowerShop.idflowershops)">Ventas</button>
           <button (click)="editFlowerShop(flowerShop)">Editar</button>
         </td>
       </tr>

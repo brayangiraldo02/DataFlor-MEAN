@@ -30,6 +30,10 @@ export class FlowershopsComponent implements OnInit {
     // Implementa la redirección a la página de inventario
   }
 
+  goToSales(id: number) {
+    // Implementa la redirección a la página de ventas
+  }
+
   // Mostrar el formulario de edición para la floristería seleccionada
   editFlowerShop(flowerShop: any) {
     this.selectedFlowerShop = { ...flowerShop };
