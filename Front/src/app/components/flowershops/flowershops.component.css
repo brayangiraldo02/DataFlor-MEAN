@@ -1,0 +1,26 @@
+* {
+  font-family: 'Karla', 'sans-serif';
+}
+
+.container {
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid rgb(146, 14, 124);
+  text-align: center;
+}
+
+th, td {
+  padding: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  margin-right: 5px;
+}

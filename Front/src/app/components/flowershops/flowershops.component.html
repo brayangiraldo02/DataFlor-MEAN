@@ -1,0 +1,58 @@
+<app-nav></app-nav>
+<div class="container">
+  <h2>Lista de Floristerías</h2>
+  <button routerLink="/flowershop/create">Agregar Floristería</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flowerShop of flowerShops">
+        <td>{{ flowerShop.idflowershops }}</td>
+        <td>{{ flowerShop.fullname }}</td>
+        <td>{{ flowerShop.address }}</td>
+        <td>{{ flowerShop.phone }}</td>
+        <td>{{ flowerShop.state ? 'Activo' : 'Inactivo' }}</td>
+        <td>
+          <button (click)="goToInventory(flowerShop.idflowershops)">Inventario</button>
+          <button (clic)="goToSales(flowerShop.idflowershops)">Ventas</button>
+          <button (click)="editFlowerShop(flowerShop)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isEditing">
+    <h3>Editar Floristería</h3>
+    <form (submit)="saveChanges()">
+      <div class="form-group">
+        <label for="fullname">Nombre:</label>
+        <input type="text" id="fullname" [(ngModel)]="selectedFlowerShop.fullname" name="fullname" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Dirección:</label>
+        <input type="text" id="address" [(ngModel)]="selectedFlowerShop.address" name="address" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono:</label>
+        <input type="text" id="phone" [(ngModel)]="selectedFlowerShop.phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="state">Estado:</label>
+        <select id="state" [(ngModel)]="selectedFlowerShop.state" name="state">
+          <option value="1">Activo</option>
+          <option value="0">Inactivo</option>
+        </select>
+      </div>
+      <button type="submit">Guardar Cambios</button>
+      <button (click)="cancelEdit()">Cancelar</button>
+    </form>
+  </div>
+</div>

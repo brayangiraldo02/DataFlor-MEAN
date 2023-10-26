@@ -52,7 +52,7 @@ const Inventory = sequelize.define
   },
   state: {
     type: DataTypes.BOOLEAN,
-    defaultValue: 0,
+    defaultValue: 1,
     allowNull: false
   },
 }, {
