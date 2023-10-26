@@ -184,7 +184,7 @@ export const loginUser = async (req, res) => {
 export const updateUserById = async (req, res) => {
   try {
     const user = await Users.update(req.body, {
-      where: { id: req.params.id },
+      where: { userid: req.params.id },
     });
 
     if (!user | (user.length === 0)) {
