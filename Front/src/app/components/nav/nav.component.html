@@ -14,7 +14,7 @@
         <!-- Se muestra un mensaje de bienvenida con el nombre de usuario -->
         <li class="welcome">¡Bienvenido{{username}}!</li>
         <!-- Se define un enlace para la página de productos -->
-        <li><a href="products">
+        <li><a href="products" *ngIf="isLoggedIn && isLoggedInAdmin">
             <span class="material-symbols-outlined">
               local_florist
             </span>
@@ -41,8 +41,8 @@
             </span>
             Iniciar Sesion
           </a></li>
-        <!-- Se define un enlace para cerrar sesión -->
-        <!-- <li><a href="logout" (click)="logoutPress()" *ngIf="isLoggedIn">
+        <!-- Se define un enlace para cerrar sesión --> 
+        <!--<li><a href="logout" (click)="logoutPress()" *ngIf="isLoggedIn">
             <span class="material-symbols-outlined">
               logout
             </span>
