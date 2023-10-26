@@ -19,7 +19,7 @@
         <td>{{ flowerShop.fullname }}</td>
         <td>{{ flowerShop.address }}</td>
         <td>{{ flowerShop.phone }}</td>
-        <td>{{ flowerShop.state ? 'Activo' : 'Inactivo' }}</td>
+        <td>{{ flowerShop.state == 'Activate' ? 'Activo' : 'Inactivo' }}</td>
         <td>
           <button (click)="goToInventory(flowerShop.idflowershops)">Inventario</button>
           <button (clic)="goToSales(flowerShop.idflowershops)">Ventas</button>
@@ -47,8 +47,8 @@
       <div class="form-group">
         <label for="state">Estado:</label>
         <select id="state" [(ngModel)]="selectedFlowerShop.state" name="state">
-          <option value="1">Activo</option>
-          <option value="0">Inactivo</option>
+          <option value="Activate">Activo</option>
+          <option value="Inactive">Inactivo</option>
         </select>
       </div>
       <button type="submit">Guardar Cambios</button>
