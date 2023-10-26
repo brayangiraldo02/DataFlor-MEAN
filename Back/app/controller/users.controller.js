@@ -129,7 +129,7 @@ export const getUsersByIdflowerShops = async (req, res) => {
 // Obtain a user by state
 export const getUsersByState = async (req, res) => {
   try {
-    const user = await Users.findOne({
+    const user = await Users.findAll({
       where: { state: req.params.state },
     });
 
