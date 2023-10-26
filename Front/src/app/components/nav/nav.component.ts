@@ -9,7 +9,7 @@ export class NavComponent {
   public isLoggedIn: boolean = false;
   public isLoggedInAdmin: boolean = false;
   public showNavbar:boolean = false; //Se crea un bool para el navbar.
-  public logo:string = '../../../assets/nav/img/dataflor.png'; //Se crea una variable para el logo.
+  public logo:string = '../../../assets/all/img/dataflor3.png'; //Se crea una variable para el logo.
   public username:string = ''
 
   //Función para mostrar el navbar responsive.

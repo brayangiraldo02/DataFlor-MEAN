@@ -1,3 +1,9 @@
+.navbar-logo img {
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 300px;
+}
+
 .loginContainer {
   background-color: white; /* Establece el color de fondo del contenedor de inicio de sesión */
   width: 100vw; /* Establece el ancho del contenedor al 100% del ancho de la ventana */
