@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 <div class="container">
   <h2>Lista de usuarios</h2>
+  <button routerLink="/user/create">Agregar usuario</button>
   <table class="table">
     <thead>
       <tr>
@@ -35,20 +36,20 @@
   <h3>Editar Usuario</h3>
   <form (ngSubmit)="updateUser()" #userForm="ngForm">
     <div class="form-group">
-      <label for="username">Username:</label>
+      <label for="username">Usuario:</label>
       <input id="username" type="text" name="username" [(ngModel)]="editingUser.username" required>
     </div>
 
     <div class="form-group">
-      <label for="phone">Phone:</label>
+      <label for="phone">Teléfono:</label>
       <input id="phone" type="text" name="phone" [(ngModel)]="editingUser.phone" required>
     </div>
 
     <div class="form-group">
-      <label for="state">State:</label>
+      <label for="state">Estado:</label>
       <select id="state" name="state" [(ngModel)]="editingUser.state" required>
-        <option value="1">Activo</option>
-        <option value="0">Inactivo</option>
+        <option value="Activate">Activo</option>
+        <option value="Inactive">Inactivo</option>
       </select>
     </div>
 
