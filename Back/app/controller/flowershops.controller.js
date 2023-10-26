@@ -128,7 +128,7 @@ export const createFlowerShop = async (req, res) => {
 export const updateFlowerShopById = async (req, res) => {
   try {
     const flowerShop = await flowerShops.update(req.body, {
-      where: { id: req.params.id },
+      where: { idflowershops: req.params.id },
     });
 
     if (!flowerShop) {

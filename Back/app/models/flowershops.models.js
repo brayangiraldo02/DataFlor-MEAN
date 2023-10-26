@@ -34,7 +34,7 @@ const flowerShops = sequelize.define("flowershops", {
   },
   state: {
     type: DataTypes.BOOLEAN,
-    defaultValue: 0,
+    defaultValue: 1,
     allowNull: false
   },
 }, {
