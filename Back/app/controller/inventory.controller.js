@@ -26,11 +26,7 @@ export const getInventory2 = async (req, res) => {
   // Obtener todos los datos de inventario con nombres de floristerías, productos y proveedores
   try {
     const inventoryData = await sequelize.query(
-      `SELECT i.inventoryid, f.fullname AS flowerShopName, p.productname AS productName, i.quantity, pr.fullname AS providerName, i.state
-       FROM inventory i
-       INNER JOIN flowershops f ON i.idflowershops = f.idflowershops
-       INNER JOIN products p ON i.productid = p.productid
-       INNER JOIN providers pr ON i.providerid = pr.providerid`,
+      `SELECT i.inventoryid, i.idflowershops, f.fullname AS flowerShopName, i.productid, p.productname AS productName, i.quantity, i.providerid, pr.fullname AS providerName, i.state FROM inventory i INNER JOIN flowershops f ON i.idflowershops = f.idflowershops INNER JOIN products p ON i.productid = p.productid INNER JOIN providers pr ON i.providerid = pr.providerid;`,
       { type: sequelize.QueryTypes.SELECT }
     );
 
