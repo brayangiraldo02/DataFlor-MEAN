@@ -35,9 +35,8 @@ export class MyFlowershopComponent implements OnInit{
   getFlowershop(): void {
     this.http.get(`http://localhost:5000/flower-shops/${this.flowershopId}}`).subscribe((data: any) => {
       this.flowershopData = data;
-      console.log(this.flowershopData);
     }, error => {
-      window.alert("ID -->" + this.flowershopId);
+      console.log(error);
     }
     );
   }

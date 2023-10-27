@@ -8,6 +8,7 @@
           <td>Nombre</td>
           <td *ngIf="!inEditMode">{{ flowershopData.fullname }}</td>
           <td *ngIf="inEditMode"><input [(ngModel)]="flowershopData.fullname" type="text"></td>
+
       </tr>
       <tr>
           <td>Dirección</td>
