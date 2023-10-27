@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importa Validators y FormGroup
+import decoteToken from 'jwt-decode';
 
 @Component({
   selector: 'app-products',
@@ -12,11 +13,24 @@ export class ProductsComponent {
   selectedProduct: any; // Floristería seleccionada para edición
   isEditing: boolean = false; // Variable para controlar la edición
   productsForm!: FormGroup; // Define el FormGroup
+  public isLoggedInAdmin: boolean = false;
+  public isLoggedInOwner: boolean = false;
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getProducts();
+    const token:any = localStorage.getItem('token');
+    const tokenDesencripted:any = decoteToken(token);
+
+    if (tokenDesencripted) {
+      if (tokenDesencripted.user.role === 'Admin') {
+        this.isLoggedInAdmin = true;
+      }
+      if (tokenDesencripted.user.role === 'Dueño') {
+        this.isLoggedInOwner = true;
+      }
+    }
   }
 
   // Obtener la lista de floristerías desde el servidor

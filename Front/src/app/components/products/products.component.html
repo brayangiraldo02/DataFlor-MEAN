@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 <div class="container">
   <h2>Lista de Productos</h2>
-  <button routerLink="/flowershop/create">Agregar productos</button>
+  <button routerLink="/product/create">Agregar productos</button>
   <table class="table">
     <thead>
       <tr>
@@ -67,5 +67,7 @@
       <button type="submit">Guardar Cambios</button>
       <button (click)="cancelEdit()">Cancelar</button>
     </form>
-  </div>  
+  </div>
+  <button *ngIf="isLoggedInAdmin" routerLink="/inventories">Inventarios</button>
+  <button *ngIf="isLoggedInOwner" routerLink="/my-inventory">Tu inventario</button>
 </div>
