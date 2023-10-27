@@ -64,6 +64,9 @@ export class FlowershopsComponent implements OnInit {
           this.selectedFlowerShop = null;
           this.isEditing = false;
         });
+    } else {
+      // Si el formulario no es válido, puedes mostrar un mensaje de error o realizar otras acciones.
+      window.alert('Por favor, complete correctamente el formulario.');
     }
   }
 
