@@ -21,7 +21,7 @@
             Inventario
           </a></li> -->
         <!-- Se define una vista para la vista del admin -->
-        <li><a href="adminview" *ngIf="isLoggedIn && isLoggedInAdmin">
+        <li><a href="admin" *ngIf="isLoggedIn && isLoggedInAdmin">
             <span class="material-symbols-outlined">
               inventory
             </span>
@@ -39,7 +39,7 @@
             Iniciar Sesion
           </a></li>
         <!-- Se define un enlace para cerrar sesión --> 
-        <li><a href="logout" (click)="logoutPress()" *ngIf="isLoggedIn">
+        <li><a href="" (click)="logoutPress()" *ngIf="isLoggedIn">
             <span class="material-symbols-outlined">
               logout
             </span>
