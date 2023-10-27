@@ -28,9 +28,13 @@ export class LoginComponent {
   onSubmit(){
     this.http.post('http://localhost:5000/login', {"username": this.username, "password": this.password}).subscribe((data:any) => {
       console.log(data);
-      localStorage.setItem('token', JSON.stringify(data.token));
-      this.router.navigate(['/']);
+      if (data.token){
+        window.alert("Bienvenido");
+        localStorage.setItem('token', JSON.stringify(data.token));
+        this.router.navigate(['/']);
+      }
     }, error => {
+      window.alert("Usuario o contraseña incorrectos");
       console.log(error);
     }
     );
