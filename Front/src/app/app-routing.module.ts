@@ -18,6 +18,7 @@ import { ProvidersComponent } from './components/providers/providers.component';
 import { CreateProviderComponent } from './components/create-provider/create-provider.component'
 import { ProductsComponent } from './components/products/products.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'provider/create', component: CreateProviderComponent, canActivate: [TokenGuardBoss]},
   { path: 'warning', component: WarningComponent},
   { path: 'products', component: ProductsComponent, canActivate: [TokenGuardBoss]},
-  { path: 'product/create', component: CreateProductComponent, canActivate: [TokenGuardBoss]}
+  { path: 'product/create', component: CreateProductComponent, canActivate: [TokenGuardBoss]},
+  { path: 'inventories', component: InventoryComponent, canActivate: [TokenGuardAdmin]},
 ];
 
 @NgModule({

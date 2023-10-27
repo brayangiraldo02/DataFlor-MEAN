@@ -30,6 +30,9 @@ import { ProvidersComponent } from './components/providers/providers.component';
 import { CreateProviderComponent } from './components/create-provider/create-provider.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { CreateInventoryComponent } from './components/create-inventory/create-inventory.component';
+import { MyInventoryComponent } from './components/my-inventory/my-inventory.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { CreateProductComponent } from './components/create-product/create-produ
     ProvidersComponent,
     CreateProviderComponent,
     ProductsComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    InventoryComponent,
+    CreateInventoryComponent,
+    MyInventoryComponent
   ],
   imports: [
     BrowserModule,

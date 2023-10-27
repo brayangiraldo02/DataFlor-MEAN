@@ -201,7 +201,10 @@ router.put("/products/update/id/:id", products.updateProduct)
 //Inventory routes
 
 // Obtain all inventory
-router.get("/inventory", inventory.getInventory)
+router.get("/inventory/db", inventory.getInventory)
+
+// Obtain all inventory
+router.get('/inventory', inventory.getInventory2);
 
 // Obtain a inventory by id
 router.get("/inventory/:id", inventory.getInventoryById)

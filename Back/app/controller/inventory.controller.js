@@ -1,5 +1,7 @@
 import express from 'express';
 import inventory from '../models/inventory.models.js';
+import products from '../models/products.models.js';
+import sequelize from '../../config/db/database.js';
 
 // (GET)
 
@@ -16,6 +18,29 @@ export const getInventory = async (req, res) => {
 
     res.status(200).json(Inventory);
   } catch (error) {
+    res.status(400).json({ message: 'Error getting inventory', error });
+  }
+};
+
+export const getInventory2 = async (req, res) => {
+  // Obtener todos los datos de inventario con nombres de floristerías, productos y proveedores
+  try {
+    const inventoryData = await sequelize.query(
+      `SELECT i.inventoryid, f.fullname AS flowerShopName, p.productname AS productName, i.quantity, pr.fullname AS providerName, i.state
+       FROM inventory i
+       INNER JOIN flowershops f ON i.idflowershops = f.idflowershops
+       INNER JOIN products p ON i.productid = p.productid
+       INNER JOIN providers pr ON i.providerid = pr.providerid`,
+      { type: sequelize.QueryTypes.SELECT }
+    );
+
+    if (inventoryData.length === 0) {
+      return res.status(404).json({ message: 'No inventory found' });
+    }
+
+    res.status(200).json(inventoryData);
+  } catch (error) {
+    console.log(error);
     res.status(400).json({ message: 'Error getting inventory', error });
   }
 };
