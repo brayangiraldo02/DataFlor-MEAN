@@ -21,6 +21,7 @@ import { FlowershopsComponent } from './components/flowershops/flowershops.compo
 import { CreateFlowershopComponent } from './components/create-flowershop/create-flowershop.component';
 import { UsersComponent } from './components/users/users.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { OwnerViewComponent } from './components/owner-view/owner-view.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
     FlowershopsComponent,
     CreateFlowershopComponent,
     UsersComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    OwnerViewComponent
   ],
   imports: [
     BrowserModule,
