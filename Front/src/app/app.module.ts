@@ -24,6 +24,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { OwnerViewComponent } from './components/owner-view/owner-view.component';
 import { MyFlowershopComponent } from './components/my-flowershop/my-flowershop.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { ProvidersComponent } from './components/providers/providers.component';
+import { CreateProviderComponent } from './components/create-provider/create-provider.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AdminViewComponent } from './components/admin-view/admin-view.component
     CreateUserComponent,
     OwnerViewComponent,
     MyFlowershopComponent,
-    AdminViewComponent
+    AdminViewComponent,
+    ProvidersComponent,
+    CreateProviderComponent
   ],
   imports: [
     BrowserModule,
