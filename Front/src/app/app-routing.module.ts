@@ -7,15 +7,17 @@ import { CreateFlowershopComponent } from './components/create-flowershop/create
 import { UsersComponent } from './components/users/users.component';
 import { TokenGuardAdmin } from './guards/admin.guard';
 import { TokenGuardOwner } from './guards/owner.guard';
+import { TokenGuardBoss } from './guards/boss.guard';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import {OwnerViewComponent} from './components/owner-view/owner-view.component';
 import {MyFlowershopComponent} from './components/my-flowershop/my-flowershop.component';
 import {MyEmployeesComponent} from './components/my-employees/my-employees.component';
 import {AdminViewComponent} from './components/admin-view/admin-view.component';
 import {WarningComponent} from './components/warning/warning.component';
-import {LogOutComponent } from './components/log-out/log-out.component';
 import { ProvidersComponent } from './components/providers/providers.component';
 import { CreateProviderComponent } from './components/create-provider/create-provider.component'
+import { ProductsComponent } from './components/products/products.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,7 +33,8 @@ const routes: Routes = [
   { path: 'providers', component: ProvidersComponent, canActivate: [TokenGuardAdmin]},
   { path: 'provider', component: CreateProviderComponent, canActivate: [TokenGuardAdmin]},
   { path: 'warning', component: WarningComponent},
-  { path: 'logout', component: LogOutComponent}
+  { path: 'products', component: ProductsComponent, canActivate: [TokenGuardBoss]},
+  { path: 'product/create', component: CreateProductComponent, canActivate: [TokenGuardBoss]}
 ];
 
 @NgModule({

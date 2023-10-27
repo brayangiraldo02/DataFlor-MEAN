@@ -3,6 +3,7 @@ import cors from "cors";
 import * as flowerShop from "../controller/flowershops.controller.js"
 import * as users from "../controller/users.controller.js"
 import * as providers from "../controller/providers.controller.js"
+import * as products from "../controller/products.controller.js"
 
 const router = express.Router();
 
@@ -11,7 +12,6 @@ router.get("/", (req, res) => {
   res.status(200).json({ 
     Welcome_message: "Welcome to the DataFlor backend!",
     flowerShops: {
-      Access: "Only admins can access this routes",
       allFlowerShops: "GET /flower-shops",
       flowerShopById: "GET /flower-shops/:id",
       flowerShopByName: "GET /flower-shops/name/:name",
@@ -23,7 +23,6 @@ router.get("/", (req, res) => {
       updateFlowerShopByFullname: "PUT /flower-shops/update/fullname/:name"
     },
     users: {
-      Access: "The administrator can access all routes and the owner can access some routes.",
       allUsers: "GET /users",
       userById: "GET /users/:id",
       userByUsername: "GET /users/username/:name",
@@ -38,7 +37,6 @@ router.get("/", (req, res) => {
       updateUserByUsername: "PUT /users/update/username/:name"
     },
     providers: {
-      Access: "All users can access these routes except PUTS and POST types.",
       allProviders: "GET /providers",
       providerById: "GET /providers/:id",
       providerByName: "GET /providers/name/:name",
@@ -48,15 +46,18 @@ router.get("/", (req, res) => {
       createProvider: "POST /providers/create",
       updateProviderById: "PUT /providers/update/id/:id",
       updateProviderByFullname: "PUT /providers/update/fullname/:name"
-
+    },
+    products: {
+      allProducts: "GET /products",
+      productById: "GET /products/:id",
+      productByName: "GET /products/name/:name",
+      createProduct: "POST /products/create",
+      updateProduct: "PUT /products/update/id/:id"
     },
     images: {
 
     },
     inventory: {
-
-    },
-    products: {
 
     }
   });
@@ -168,5 +169,24 @@ router.put("/providers/update/id/:id", providers.updateProviderById)
 router.put("/providers/update/fullname/:name", providers.updateProviderByName)
 
 //----------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------
+//Products routes
+
+// Obtain all products
+router.get("/products", products.getProducts)
+
+// Obtain a product by id
+router.get("/products/:id", products.getProductById)
+
+// Obtain a product by name
+router.get("/products/name/:name", products.getProductByName)
+
+// Create a new product
+router.post("/products/create", products.createProduct)
+
+// Update a product by id
+router.put("/products/update/id/:id", products.updateProduct)
 
 export default router;

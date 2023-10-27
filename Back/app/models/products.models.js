@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../../config/db/database";
+import sequelize from "../../config/db/database.js";
 
 // CREATE TABLE products(
 //   productid INT AUTO_INCREMENT,
@@ -14,7 +14,7 @@ const products = sequelize.define
 ("products", {
   "productid": {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   "productname": {type: DataTypes.STRING(255), allowNull: false},
-  "description": {type: DataTypes.TEXT, allowNull: true},
+  "description": {type: DataTypes.TEXT},
   "price": {type: DataTypes.FLOAT, allowNull: false, validate: {min: 0}},
   "state": {type: DataTypes.ENUM('Available', 'Unavailable'), defaultValue: 'Available', allowNull: false},
 }, {timestamps: false,

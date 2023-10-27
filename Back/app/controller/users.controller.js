@@ -165,13 +165,16 @@ export const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const user = await Users.findOne({ where: { username, password } });
+    const user = await Users.findOne({ where: { username, password, state: "Activate" } });
 
     if (user) {
       const token = jwt.sign({user}, "kaozDF", {
         expiresIn: "30m"
       });
       res.send({ token });
+    }
+    else {
+      res.status(400).json({message: "Error login user"});
     }
   } catch (error) {
     console.log(error);
