@@ -29,7 +29,7 @@ export class LoginComponent {
     this.http.post('http://localhost:5000/login', {"username": this.username, "password": this.password}).subscribe((data:any) => {
       console.log(data);
       localStorage.setItem('token', JSON.stringify(data.token));
-      this.router.navigate(['/']);
+      this.router.navigate(['']);
     }, error => {
       console.log(error);
     }
