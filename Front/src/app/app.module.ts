@@ -26,6 +26,8 @@ import { MyFlowershopComponent } from './components/my-flowershop/my-flowershop.
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { WarningComponent } from './components/warning/warning.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
+import { ProvidersComponent } from './components/providers/providers.component';
+import { CreateProviderComponent } from './components/create-provider/create-provider.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { LogOutComponent } from './components/log-out/log-out.component';
     MyFlowershopComponent,
     AdminViewComponent,
     WarningComponent,
-    LogOutComponent
+    LogOutComponent,
+    ProvidersComponent,
+    CreateProviderComponent
   ],
   imports: [
     BrowserModule,

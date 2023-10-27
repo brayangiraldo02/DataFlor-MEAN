@@ -12,14 +12,7 @@
       <!-- Se define el listado del menu -->
       <ul [ngClass]="{ 'show': showNavbar }">
         <!-- Se muestra un mensaje de bienvenida con el nombre de usuario -->
-        <li class="welcome">¡Bienvenido {{username}}!</li>
-        <!-- Se define un enlace para la página de productos -->
-        <!-- <li><a href="products" *ngIf="isLoggedIn && isLoggedInAdmin">
-            <span class="material-symbols-outlined">
-              local_florist
-            </span>
-            Inventario
-          </a></li> -->
+        <li class="welcome">Bienvenido {{username}}</li>
         <!-- Se define una vista para la vista del admin -->
         <li><a href="admin" *ngIf="isLoggedIn && isLoggedInAdmin">
             <span class="material-symbols-outlined">
@@ -33,6 +26,18 @@
             supervisor_account
             </span>
             Panel de dueño
+        </a></li>
+        <li><a href="inventory" *ngIf="isLoggedIn && isLoggedInEmployee">
+          <span class="material-symbols-outlined">
+            local_florist
+            </span>
+            Inventario
+        </a></li>
+        <li><a href="sales" *ngIf="isLoggedIn && isLoggedInEmployee">
+          <span class="material-symbols-outlined">
+            shopping_cart
+            </span>
+            Ventas
         </a></li>
         <!-- Se define un enlace para iniciar sesión -->
         <li><a href="login" *ngIf="!isLoggedIn">

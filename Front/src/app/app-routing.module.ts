@@ -6,12 +6,15 @@ import { FlowershopsComponent } from './components/flowershops/flowershops.compo
 import { CreateFlowershopComponent } from './components/create-flowershop/create-flowershop.component';
 import { UsersComponent } from './components/users/users.component';
 import { TokenGuardAdmin } from './guards/admin.guard';
+import { TokenGuardOwner } from './guards/owner.guard';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import {OwnerViewComponent} from './components/owner-view/owner-view.component';
 import {MyFlowershopComponent} from './components/my-flowershop/my-flowershop.component';
 import {AdminViewComponent} from './components/admin-view/admin-view.component';
 import {WarningComponent} from './components/warning/warning.component';
 import {LogOutComponent } from './components/log-out/log-out.component';
+import { ProvidersComponent } from './components/providers/providers.component';
+import { CreateProviderComponent } from './components/create-provider/create-provider.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,12 +23,13 @@ const routes: Routes = [
   { path: 'flowershop/create', component: CreateFlowershopComponent, canActivate: [TokenGuardAdmin]},
   { path: 'users', component: UsersComponent, canActivate: [TokenGuardAdmin]},
   { path: 'user/create', component: CreateUserComponent, canActivate: [TokenGuardAdmin] },
-  { path: 'owner', component: OwnerViewComponent },
+  { path: 'owner', component: OwnerViewComponent, canActivate: [TokenGuardOwner] },
+  { path: 'my-flowershop', component: MyFlowershopComponent, canActivate: [TokenGuardOwner]},
   { path: 'admin', component: AdminViewComponent, canActivate: [TokenGuardAdmin] },
+  { path: 'providers', component: ProvidersComponent, canActivate: [TokenGuardAdmin]},
+  { path: 'provider', component: CreateProviderComponent, canActivate: [TokenGuardAdmin]},
   { path: 'warning', component: WarningComponent},
-  { path: 'logout', component: LogOutComponent},
-  { path: 'my-flowershop', component: MyFlowershopComponent, canActivate: [TokenGuardAdmin]},
-  { path: 'admin', component: AdminViewComponent, canActivate: [TokenGuardAdmin] }
+  { path: 'logout', component: LogOutComponent}
 ];
 
 @NgModule({
