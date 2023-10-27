@@ -11,10 +11,10 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'flowershops', component: FlowershopsComponent },
+  { path: 'flowershops', component: FlowershopsComponent, canActivate: [TokenGuardAdmin] },
   { path: 'flowershop/create', component: CreateFlowershopComponent, canActivate: [TokenGuardAdmin]},
-  { path: 'users', component: UsersComponent },
-  { path: 'user/create', component: CreateUserComponent }
+  { path: 'users', component: UsersComponent, canActivate: [TokenGuardAdmin]},
+  { path: 'user/create', component: CreateUserComponent, canActivate: [TokenGuardAdmin] }
 ];
 
 @NgModule({
