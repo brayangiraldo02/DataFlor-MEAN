@@ -11,6 +11,7 @@ export class NavComponent {
   public isLoggedIn: boolean = false;
   public isLoggedInAdmin: boolean = false;
   public isLoggedInOwner: boolean = false;
+  public isLoggedInEmployee: boolean = false;
   public showNavbar:boolean = false; //Se crea un bool para el navbar.
   public logo:string = '../../../assets/all/img/dataflor3.png'; //Se crea una variable para el logo.
   public username:string = ''
@@ -41,6 +42,9 @@ export class NavComponent {
       }
       if (tokenDesencripted.user.role === 'Dueño') {
         this.isLoggedInOwner = true;
+      }
+      if (tokenDesencripted.user.role === 'Empleado') {
+        this.isLoggedInEmployee = true;
       }
     }
   }

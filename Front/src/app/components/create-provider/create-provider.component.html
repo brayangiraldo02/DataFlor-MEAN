@@ -1,0 +1,20 @@
+<app-nav></app-nav>
+<div class="create-provider">
+  <h2>Crear proveedor</h2>
+  <form (ngSubmit)="createProvider()" #providerForm="ngForm">
+    <div>
+      <label for="fullname">Nombre:</label>
+      <input id="fullname" name="fullname" [(ngModel)]="provider.fullname" required />
+    </div>
+    <div>
+      <label for="address">Dirección:</label>
+      <input id="address" name="address" [(ngModel)]="provider.address" required />
+    </div>
+    <div>
+      <label for="phone">Teléfono:</label>
+      <input id="phone" name="phone" [(ngModel)]="provider.phone" required />
+    </div>
+    <button type="submit">Crear proveedor</button>
+    <button routerLink="/providers">Volver</button>
+  </form>
+</div>
