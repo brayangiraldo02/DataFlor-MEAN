@@ -1,8 +1,4 @@
-h2{
-  color: white;
-  text-align: center;
-  margin: 20px;
-}
+
 body {
   background-color: #09020F;
   color: white; /* Texto en color blanco */
@@ -60,12 +56,12 @@ button {
   background-color: rgb(207, 20, 176);
   color: white;
   transition: background-color 0.3s;
-  width: 70%;
+  width: 80%;
   font-size: 20px;
   border-radius: 5px;
   border: 1px solid rgb(207, 20, 176);
-  padding: 10px;
-  margin: 10px;
+  padding: 6px;
+  margin: 6px;
 
 }
 
@@ -76,5 +72,5 @@ button:hover {
 
 button:active {
   background-color: rgb(207, 20, 176);
-  border: 1px solid rgb(207, 20, 176);
+  border: 1px solid rgb(207, 20, 176);
 }
