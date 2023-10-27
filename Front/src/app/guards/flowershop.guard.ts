@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 
-export class TokenGuardOwner implements CanActivate {
+export class TokenGuardFlowershop implements CanActivate {
   constructor(private router: Router) { }
 
    canActivate(): boolean {
