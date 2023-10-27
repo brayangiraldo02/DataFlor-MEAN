@@ -23,6 +23,8 @@ import { UsersComponent } from './components/users/users.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { OwnerViewComponent } from './components/owner-view/owner-view.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { WarningComponent } from './components/warning/warning.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AdminViewComponent } from './components/admin-view/admin-view.component
     UsersComponent,
     CreateUserComponent,
     OwnerViewComponent,
-    AdminViewComponent
+    AdminViewComponent,
+    WarningComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,
