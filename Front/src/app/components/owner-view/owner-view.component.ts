@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-owner-view',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./owner-view.component.css']
 })
 export class OwnerViewComponent {
+
+  constructor(private router: Router) { }
+
+  navigateTo( route: string){
+    this.router.navigate([route]);
+  }
 
 }

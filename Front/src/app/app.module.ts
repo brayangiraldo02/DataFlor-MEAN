@@ -22,6 +22,7 @@ import { CreateFlowershopComponent } from './components/create-flowershop/create
 import { UsersComponent } from './components/users/users.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { OwnerViewComponent } from './components/owner-view/owner-view.component';
+import { MyFlowershopComponent } from './components/my-flowershop/my-flowershop.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AdminViewComponent } from './components/admin-view/admin-view.component
     UsersComponent,
     CreateUserComponent,
     OwnerViewComponent,
+    MyFlowershopComponent,
     AdminViewComponent
   ],
   imports: [
