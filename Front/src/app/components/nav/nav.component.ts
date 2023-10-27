@@ -19,7 +19,6 @@ export class NavComponent {
 
   public logoutPress(): void {
     localStorage.clear();
-    this.router.navigate(['']);
   }
 
   //Función para mostrar el navbar responsive.
