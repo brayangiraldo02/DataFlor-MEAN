@@ -7,6 +7,7 @@ import { CreateFlowershopComponent } from './components/create-flowershop/create
 import { UsersComponent } from './components/users/users.component';
 import { TokenGuardAdmin } from './guards/admin.guard';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import {OwnerViewComponent} from './components/owner-view/owner-view.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'flowershops', component: FlowershopsComponent },
   { path: 'flowershop/create', component: CreateFlowershopComponent, canActivate: [TokenGuardAdmin]},
   { path: 'users', component: UsersComponent },
-  { path: 'user/create', component: CreateUserComponent }
+  { path: 'user/create', component: CreateUserComponent },
+  { path: 'owner', component: OwnerViewComponent }
 ];
 
 @NgModule({
