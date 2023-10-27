@@ -22,7 +22,7 @@
         <td>{{ flowerShop.state == 'Activate' ? 'Activo' : 'Inactivo' }}</td>
         <td>
           <button (click)="goToInventory(flowerShop.idflowershops)">Inventario</button>
-          <button (clic)="goToSales(flowerShop.idflowershops)">Ventas</button>
+          <button (click)="goToSales(flowerShop.idflowershops)">Ventas</button>
           <button (click)="editFlowerShop(flowerShop)">Editar</button>
         </td>
       </tr>
@@ -31,28 +31,43 @@
 
   <div *ngIf="isEditing">
     <h3>Editar Floristería</h3>
-    <form (submit)="saveChanges()">
+    <form (submit)="saveChanges()" [formGroup]="flowerShopForm">
       <div class="form-group">
         <label for="fullname">Nombre:</label>
-        <input type="text" id="fullname" [(ngModel)]="selectedFlowerShop.fullname" name="fullname" required>
+        <input type="text" id="fullname" formControlName="fullname" />
+        <div *ngIf="flowerShopForm.get('fullname')?.hasError('required')">
+          Nombre es obligatorio.
+        </div>
       </div>
       <div class="form-group">
         <label for="address">Dirección:</label>
-        <input type="text" id="address" [(ngModel)]="selectedFlowerShop.address" name="address" required>
+        <input type="text" id="address" formControlName="address" />
+        <div *ngIf="flowerShopForm.get('address')?.hasError('required')">
+          Dirección es obligatoria.
+        </div>
       </div>
       <div class="form-group">
         <label for="phone">Teléfono:</label>
-        <input type="text" id="phone" [(ngModel)]="selectedFlowerShop.phone" name="phone" required>
+        <input type="text" id="phone" formControlName="phone" />
+        <div *ngIf="flowerShopForm.get('phone')?.hasError('required')">
+          Teléfono es obligatorio.
+        </div>
+        <div *ngIf="flowerShopForm.get('phone')?.hasError('pattern')">
+          Teléfono solo debe contener números.
+        </div>
       </div>
       <div class="form-group">
         <label for="state">Estado:</label>
-        <select id="state" [(ngModel)]="selectedFlowerShop.state" name="state">
+        <select id="state" formControlName="state">
           <option value="Activate">Activo</option>
           <option value="Inactive">Inactivo</option>
         </select>
+        <div *ngIf="flowerShopForm.get('state')?.hasError('required')">
+          Estado es obligatorio.
+        </div>
       </div>
       <button type="submit">Guardar Cambios</button>
       <button (click)="cancelEdit()">Cancelar</button>
     </form>
-  </div>
+  </div>  
 </div>
