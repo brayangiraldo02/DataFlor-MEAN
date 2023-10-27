@@ -4,6 +4,7 @@ import * as flowerShop from "../controller/flowershops.controller.js"
 import * as users from "../controller/users.controller.js"
 import * as providers from "../controller/providers.controller.js"
 import * as products from "../controller/products.controller.js"
+import * as inventory from "../controller/inventory.controller.js"
 
 const router = express.Router();
 
@@ -54,10 +55,14 @@ router.get("/", (req, res) => {
       createProduct: "POST /products/create",
       updateProduct: "PUT /products/update/id/:id"
     },
-    images: {
-
-    },
     inventory: {
+      allInventory: "GET /inventory",
+      inventoryById: "GET /inventory/:id",
+      inventoryByIdflowerShops: "GET /inventory/idflowershops/:idflowerShops",
+      createInventory: "POST /inventory/create",
+      updateInventory: "PUT /inventory/update/id/:id"
+    },
+    sales: {
 
     }
   });
@@ -188,5 +193,37 @@ router.post("/products/create", products.createProduct)
 
 // Update a product by id
 router.put("/products/update/id/:id", products.updateProduct)
+
+//----------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------
+//Inventory routes
+
+// Obtain all inventory
+router.get("/inventory/db", inventory.getInventory)
+
+// Obtain all inventory
+router.get('/inventory', inventory.getInventory2);
+
+// Obtain a inventory by id
+router.get("/inventory/:id", inventory.getInventoryById)
+
+// Obtain a inventory by idflowerShops
+router.get("/inventory/idflowershops/:idflowerShops", inventory.getInventoryByIdflowerShops)
+
+// Create a new inventory
+router.post("/inventory/create", inventory.createInventory)
+
+// Update a inventory by id
+router.put("/inventory/update/id/:id", inventory.updateInventory)
+
+//----------------------------------------------------------------------------------------------
+// Sales routes
+
+
+
+//----------------------------------------------------------------------------------------------
+
 
 export default router;
