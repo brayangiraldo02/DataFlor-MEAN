@@ -111,7 +111,7 @@ export const getUsersByRole = async (req, res) => {
 // Obtain a user by idflowerShops
 export const getUsersByIdflowerShops = async (req, res) => {
   try {
-    const user = await Users.findOne({
+    const user = await Users.findAll({
       where: { idflowershops: req.params.idflowershops },
     });
 

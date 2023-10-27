@@ -23,6 +23,7 @@ import { UsersComponent } from './components/users/users.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { OwnerViewComponent } from './components/owner-view/owner-view.component';
 import { MyFlowershopComponent } from './components/my-flowershop/my-flowershop.component';
+import { MyEmployeesComponent } from './components/my-employees/my-employees.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MyFlowershopComponent } from './components/my-flowershop/my-flowershop.
     UsersComponent,
     CreateUserComponent,
     OwnerViewComponent,
-    MyFlowershopComponent
+    MyFlowershopComponent,
+    MyEmployeesComponent
   ],
   imports: [
     BrowserModule,
