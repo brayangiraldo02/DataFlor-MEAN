@@ -14,6 +14,7 @@ body {
 
 /* Estilo para el contenedor principal del componente */
 div {
+  color: rgb(204, 20, 173);
   margin: 20px;
   padding: 20px;
   /* border: 2px solid rgb(238, 6, 229); */

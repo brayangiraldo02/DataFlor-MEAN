@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importa Validators y FormGroup
 
 @Component({
   selector: 'app-providers',
   templateUrl: './providers.component.html',
   styleUrls: ['./providers.component.css'] // Agrega el archivo CSS si lo tienes
 })
-export class ProvidersComponent implements OnInit {
-  providers: any[] = []; // Arreglo para almacenar las floristerías
-  selectedProviders: any; // Floristería seleccionada para edición
-  isEditing: boolean = false; // Variable para controlar la edición
 
-  constructor(private http: HttpClient) { }
+export class ProvidersComponent implements OnInit {
+  providers: any[] = [];
+  selectedProvider: any;
+  isEditing: boolean = false;
+  providerForm!: FormGroup;
+
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getProviders();
   }
 
-  // Obtener la lista de floristerías desde el servidor
   getProviders() {
     this.http.get('http://localhost:5000/providers')
       .subscribe((data: any) => {
@@ -25,28 +27,33 @@ export class ProvidersComponent implements OnInit {
       });
   }
 
-  // Mostrar el formulario de edición para la floristería seleccionada
-  editProviders(providers: any) {
-    this.selectedProviders = { ...providers };
+  editProvider(provider: any) {
+    this.selectedProvider = { ...provider };
     this.isEditing = true;
+
+    this.providerForm = this.formBuilder.group({
+      fullname: [this.selectedProvider.fullname, [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      address: [this.selectedProvider.address, Validators.required],
+      phone: [this.selectedProvider.phone, [Validators.required, Validators.pattern('^[0-9]*$')]],
+      state: [this.selectedProvider.state, Validators.required],
+    });
   }
 
-  // Guardar los cambios en la floristería
   saveChanges() {
-    if (this.selectedProviders) {
-      this.http.put(`http://localhost:5000/flower-shops/update/id/${this.selectedProviders.providerid}`, this.selectedProviders)
+    if (this.selectedProvider && this.providerForm.valid) {
+      this.selectedProvider = { ...this.selectedProvider, ...this.providerForm.value };
+      
+      this.http.put(`http://localhost:5000/providers/update/id/${this.selectedProvider.providerid}`, this.selectedProvider)
         .subscribe((data: any) => {
-          // Actualizar la lista de floristerías después de la edición
           this.getProviders();
-          this.selectedProviders = null;
+          this.selectedProvider = null;
           this.isEditing = false;
         });
     }
   }
 
-  // Cancelar la edición y volver a la lista
   cancelEdit() {
-    this.selectedProviders = null;
+    this.selectedProvider = null;
     this.isEditing = false;
   }
 }

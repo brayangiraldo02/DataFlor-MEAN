@@ -1,45 +1,57 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importa Validators y FormGroup
+
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+
 export class UsersComponent implements OnInit {
-  users: any[] = []; // Define el array de usuarios
-  editingUser: any; // Almacena el usuario que se está editando
+  users: any[] = [];
+  editingUser: any;
+  userForm!: FormGroup; // Cambia el nombre de la variable a userForm
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
 
-  ngOnInit(): void {
-    // Llama a la API para obtener la lista de usuarios al iniciar el componente
+  ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers() {
     this.http.get('http://localhost:5000/users').subscribe((data: any) => {
       this.users = data;
     });
   }
 
   editUser(user: any) {
-    // Al hacer clic en el botón de editar, muestra el formulario de edición
     this.editingUser = { ...user };
+    this.userForm = this.formBuilder.group({
+      username: [this.editingUser.username, Validators.required],
+      phone: [this.editingUser.phone, [Validators.required, Validators.pattern('^[0-9]*$')]],
+      state: [this.editingUser.state, Validators.required],
+    });
   }
 
   updateUser() {
-    // Realiza la solicitud al backend para actualizar el usuario
-    this.http.put(`http://localhost:5000/users/update/id/${this.editingUser.userid}`, this.editingUser)
-      .subscribe((response: any) => {
-        if (response.message === "User updated successfully") {
-          // Actualiza la lista de usuarios con los cambios
-          const index = this.users.findIndex(user => user.id === this.editingUser.id);
-          this.users[index] = { ...this.editingUser };
-          this.editingUser = null; // Cierra el formulario de edición
-          this.ngOnInit(); // Actualiza la lista de usuarios
-        }
-      });
+    if (this.editingUser && this.userForm.valid) {
+      this.editingUser = { ...this.editingUser, ...this.userForm.value };
+      this.http.put(`http://localhost:5000/users/update/id/${this.editingUser.userid}`, this.editingUser)
+        .subscribe((response: any) => {
+          if (response.message === "User updated successfully") {
+            const index = this.users.findIndex(user => user.userid === this.editingUser.userid);
+            this.users[index] = { ...this.editingUser };
+            this.editingUser = null;
+            this.userForm.reset(); // Limpia el formulario
+          }
+        });
+    }
   }
 
   cancelEdit() {
-    this.editingUser = null; // Cierra el formulario de edición
-    this.ngOnInit(); // Actualiza la lista de usuarios
+    this.editingUser = null;
+    this.userForm.reset(); // Limpia el formulario
   }
 }
