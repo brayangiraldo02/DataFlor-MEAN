@@ -1,79 +1,76 @@
--- Database: DataFlor
+SHOW DATABASES;
+USE dataflor;
 
--- DROP DATABASE IF EXISTS "DataFlor";
-
-CREATE DATABASE "DataFlor"
-
-USE "DataFlor";
-
--- Crear la tabla Providers
-CREATE TABLE Providers (
-  providerID SERIAL PRIMARY KEY,
-  fullName VARCHAR(255) NOT NULL,
+CREATE TABLE providers(
+  providerid INT AUTO_INCREMENT,
+  fullname VARCHAR(255) NOT NULL,
   phone VARCHAR(15) NOT NULL,
-  address VARCHAR(255) NOT NULL,
-  state BOOLEAN NOT NULL DEFAULT FALSE
+  address TEXT NOT NULL,
+  state ENUM('Activate', 'Inactive') DEFAULT 'Activate' NOT NULL,
+  CONSTRAINT pk_providerid PRIMARY KEY (providerid)
 );
 
--- Crear la tabla Products
-CREATE TABLE Products (
-  productID SERIAL PRIMARY KEY,
-  productName VARCHAR(255) NOT NULL,
+CREATE TABLE products(
+  productid INT AUTO_INCREMENT,
+  productname VARCHAR(255) NOT NULL,
   description TEXT,
-  price DECIMAL(12, 2) NOT NULL,
-  state BOOLEAN NOT NULL DEFAULT FALSE
+  price FLOAT NOT NULL,
+  state ENUM('Available', 'Unavailable') DEFAULT 'Available' NOT NULL,
+  CONSTRAINT pk_productid PRIMARY KEY (productid)
 );
 
--- Crear la tabla flowerShops
-CREATE TABLE flowerShops (
-  idflowerShops SERIAL PRIMARY KEY,
-  fullName VARCHAR(255) NOT NULL,
-  address VARCHAR(255) NOT NULL,
+CREATE TABLE flowershops (
+  idflowershops INT AUTO_INCREMENT,
+  fullname VARCHAR(255) NOT NULL,
+  address TEXT NOT NULL,
   phone VARCHAR(15) NOT NULL,
-  inventoryID INT NOT NULL,
-  state BOOLEAN NOT NULL DEFAULT FALSE
+  state ENUM('Activate', 'Inactive') DEFAULT 'Activate' NOT NULL,
+  CONSTRAINT pk_idflowershops PRIMARY KEY (idflowershops)
 );
 
--- Crear la tabla Inventory
-CREATE TABLE Inventory (
-  id SERIAL PRIMARY KEY,
-  inventoryID INT NOT NULL,
-  productID INT NOT NULL,
-  quantity INT NOT NULL,
-  providerID INT NOT NULL,
-  state BOOLEAN NOT NULL DEFAULT FALSE,
-  FOREIGN KEY (inventoryID) REFERENCES flowerShops(idflowerShops),
-  FOREIGN KEY (productID) REFERENCES Products(productID),
-  FOREIGN KEY (providerID) REFERENCES Providers(providerID)
+CREATE TABLE inventory (
+  inventoryid INT AUTO_INCREMENT,
+  idflowershops INT NOT NULL,
+  productid INT NOT NULL,
+  quantity INT NOT NULL CHECK (quantity > 0),
+  providerid INT NOT NULL,
+  state ENUM('Activate', 'Inactive') DEFAULT 'Activate' NOT NULL,
+  CONSTRAINT pk_inventoryid PRIMARY KEY (inventoryid),
+  CONSTRAINT fk_idflowershops FOREIGN KEY (idflowershops) REFERENCES flowershops(idflowershops),
+  CONSTRAINT fk_productid FOREIGN KEY (productid) REFERENCES products(productid),
+  CONSTRAINT fk_providerid FOREIGN KEY (providerid) REFERENCES providers(providerid)
 );
 
--- Crear la tabla Users
-CREATE TABLE Users (
-  userID SERIAL PRIMARY KEY,
+CREATE TABLE users (
+  userid INT AUTO_INCREMENT,
   username VARCHAR(50) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  fullName VARCHAR(255) NOT NULL,
+  fullname VARCHAR(255) NOT NULL,
   phone VARCHAR(15) NOT NULL,
-  role VARCHAR(10) NOT NULL CHECK (role IN ('admin', 'owner', 'employee')),
-  idflowerShops INT,
-  state BOOLEAN NOT NULL DEFAULT FALSE,
-  FOREIGN KEY (idflowerShops) REFERENCES flowerShops(idflowerShops)
+  role ENUM('Admin', 'Dueño', 'Empleado') NOT NULL,
+  idflowershops INT,
+  state ENUM('Activate', 'Inactive') DEFAULT 'Activate' NOT NULL,
+  CONSTRAINT pk_userid PRIMARY KEY (userid),
+  CONSTRAINT fk_idflowershops FOREIGN KEY (idflowershops) REFERENCES flowershops(idflowershops)
 );
 
--- Crear la tabla Images
-CREATE TABLE Images (
-  imageID SERIAL PRIMARY KEY,
-  productID INT NOT NULL,
-  imageURL VARCHAR(255) NOT NULL,
-  FOREIGN KEY (productID) REFERENCES Products(productID)
+CREATE TABLE images (
+  imageid INT AUTO_INCREMENT,
+  productid INT NOT NULL,
+  imageurl VARCHAR(500) NOT NULL,
+  CONSTRAINT pk_imageid PRIMARY KEY (imageid),
+  CONSTRAINT fk_productid FOREIGN KEY (productid) REFERENCES products(productid)
 );
 
-CREATE TABLE Sales (
-  idSales SERIAL PRIMARY KEY,
-  clientName VARCHAR(255) NOT NULL,
-  userID INT NOT NULL,
-  productID INT NOT NULL,
+CREATE TABLE sales (
+  saleid INT AUTO_INCREMENT,
+  clientname VARCHAR(255) NOT NULL,
+  userid INT NOT NULL,
+  productid INT NOT NULL,
   quantity INT NOT NULL CHECK (quantity > 0),
-  FOREIGN KEY (userID) REFERENCES Users(userID),
-  FOREIGN KEY (productID) REFERENCES Products(productID)
-);
+  CONSTRAINT pk_saleid PRIMARY KEY (saleid),
+  CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES users(userid),
+  CONSTRAINT fk_productid FOREIGN KEY (productid) REFERENCES products(productid)
+)
+
+INSERT INTO `users` (`userid`, `username`, `password`, `fullname`, `phone`, `role`, `idflowershops`, `state`) VALUES (NULL, 'ADMIN', '123', 'Brayan Giraldo', '3215884968', 'Admin', NULL, 'Activate');
