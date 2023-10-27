@@ -1,3 +1,5 @@
+color background: 09020F
+
 Steps for the running of the web application:
 
 1. npm install
