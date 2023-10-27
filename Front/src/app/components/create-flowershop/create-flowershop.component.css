@@ -37,6 +37,10 @@ button {
 
 }
 
+div {
+  color: rgb(204, 20, 173);
+}
+
 button:hover {
   background-color: rgb(238, 6, 229); /* Cambia el color de fondo al pasar sobre el botón */
 }

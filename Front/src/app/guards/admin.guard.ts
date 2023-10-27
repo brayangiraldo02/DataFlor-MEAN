@@ -12,19 +12,18 @@ export class TokenGuardAdmin implements CanActivate {
 
    canActivate(): boolean {
     const token:any = localStorage.getItem('token')
-    const tokenDesencripted:any  = decodeToken(token)
-
-    if (tokenDesencripted.user.role === 'Admin') {
-      console.log(tokenDesencripted.role)
-      return true;
+    if(token !== null){
+      const tokenDesencripted:any  = decodeToken(token)
+      if (tokenDesencripted.user.role === 'Admin') {
+        return true;
+      } else {
+        this.router.navigate(['./warning']);
+        return false;
+      }
     } else {
-      this.router.navigate(['']);
+      console.log('Non-admin user');
+      this.router.navigate(['./warning']);
       return false;
     }
   }
-
 }
-
-// export const adminGuard: CanActivateFn = (route, state) => {
-//   return true;
-// };
