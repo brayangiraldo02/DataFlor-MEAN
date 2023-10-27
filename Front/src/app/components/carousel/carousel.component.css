@@ -26,11 +26,12 @@
   transform: translate(0, -50%);
   right: 32px;
   font-size: 45px;
-  color: #fff;
+  color: #faf2ff;
   z-index: 1;
   cursor: pointer;
   right: 2%;
   font-size: 30px;
+  background-color:transparent;
 }
 
 .leftArrow {
@@ -39,11 +40,12 @@
   transform: translate(0, -50%);
   left: 32px;
   font-size: 45px;
-  color: #fff;
+  color: #faf2ff;
   z-index: 1;
   cursor: pointer;
   left: 2%;
   font-size: 30px;
+  background-color:transparent;
 }
 
 .slider {
@@ -56,7 +58,6 @@
 .dotsContainer {
   display: flex;
   justify-content: center;
-  position: absolute;
   bottom: 10px; /* Ajusta esta posición según tu preferencia */
   width: 100%;
 }

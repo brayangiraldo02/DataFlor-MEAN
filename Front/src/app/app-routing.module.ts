@@ -10,6 +10,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import {OwnerViewComponent} from './components/owner-view/owner-view.component';
 import {MyFlowershopComponent} from './components/my-flowershop/my-flowershop.component';
 import {MyEmployeesComponent} from './components/my-employees/my-employees.component';
+import {AdminViewComponent} from './components/admin-view/admin-view.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,8 +21,8 @@ const routes: Routes = [
   { path: 'user/create', component: CreateUserComponent, canActivate: [TokenGuardAdmin] },
   { path: 'owner', component: OwnerViewComponent },
   { path: 'my-flowershop', component: MyFlowershopComponent },
-  { path: 'my-employees', component: MyEmployeesComponent }
-
+  { path: 'my-employees', component: MyEmployeesComponent },
+  { path: 'admin', component: AdminViewComponent, canActivate: [TokenGuardAdmin] }
 ];
 
 @NgModule({
