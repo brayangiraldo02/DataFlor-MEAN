@@ -117,7 +117,7 @@ router.get("/users/phone/:phone", users.getUsersByPhone)
 router.get("/users/role/:role", users.getUsersByRole)
 
 // Obtain a user by idflowerShops
-router.get("/users/idflowerShops/:idflowerShops", users.getUsersByIdflowerShops)
+router.get("/users/idflowerShops/:idflowershops", users.getUsersByIdflowerShops)
 
 // Obtain a user by state
 router.get("/users/state/:state", users.getUsersByState)
