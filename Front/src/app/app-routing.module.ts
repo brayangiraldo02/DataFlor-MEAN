@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: 'user/create', component: CreateUserComponent, canActivate: [TokenGuardAdmin] },
   { path: 'owner', component: OwnerViewComponent, canActivate: [TokenGuardOwner] },
   { path: 'my-flowershop', component: MyFlowershopComponent, canActivate: [TokenGuardOwner]},
-  { path: 'admin', component: AdminViewComponent, canActivate: [TokenGuardAdmin] },
+  { path: 'my-employees', component: MyEmployeesComponent, canActivate: [TokenGuardOwner]},
+  { path: 'admin', component: AdminViewComponent, canActivate: [TokenGuardAdmin]},
   { path: 'providers', component: ProvidersComponent, canActivate: [TokenGuardAdmin]},
   { path: 'provider', component: CreateProviderComponent, canActivate: [TokenGuardAdmin]}
 ];
