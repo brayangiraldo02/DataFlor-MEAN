@@ -6,6 +6,7 @@ import { FlowershopsComponent } from './components/flowershops/flowershops.compo
 import { CreateFlowershopComponent } from './components/create-flowershop/create-flowershop.component';
 import { UsersComponent } from './components/users/users.component';
 import { TokenGuardAdmin } from './guards/admin.guard';
+import { TokenGuardOwner } from './guards/owner.guard';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import {OwnerViewComponent} from './components/owner-view/owner-view.component';
 import {AdminViewComponent} from './components/admin-view/admin-view.component';
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'flowershop/create', component: CreateFlowershopComponent, canActivate: [TokenGuardAdmin]},
   { path: 'users', component: UsersComponent, canActivate: [TokenGuardAdmin]},
   { path: 'user/create', component: CreateUserComponent, canActivate: [TokenGuardAdmin] },
-  { path: 'owner', component: OwnerViewComponent },
+  { path: 'owner', component: OwnerViewComponent, canActivate: [TokenGuardOwner] },
   { path: 'admin', component: AdminViewComponent, canActivate: [TokenGuardAdmin] }
 ];
 
