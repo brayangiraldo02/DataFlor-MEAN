@@ -25,6 +25,8 @@ import { OwnerViewComponent } from './components/owner-view/owner-view.component
 import { MyFlowershopComponent } from './components/my-flowershop/my-flowershop.component';
 import { MyEmployeesComponent } from './components/my-employees/my-employees.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { WarningComponent } from './components/warning/warning.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
 import { ProvidersComponent } from './components/providers/providers.component';
 import { CreateProviderComponent } from './components/create-provider/create-provider.component';
 
@@ -44,6 +46,8 @@ import { CreateProviderComponent } from './components/create-provider/create-pro
     MyFlowershopComponent,
     MyEmployeesComponent,
     AdminViewComponent,
+    WarningComponent,
+    LogOutComponent,
     ProvidersComponent,
     CreateProviderComponent
   ],
