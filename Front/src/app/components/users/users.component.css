@@ -1,3 +1,13 @@
+* {
+  color: white;
+}
+
+
+h2{
+  color: white;
+  text-align: center;
+  margin: 20px;
+}
 
 body {
   background-color: #09020F;
@@ -54,15 +64,13 @@ td, th {
 
 button {
   background-color: rgb(207, 20, 176);
-  color: white;
   transition: background-color 0.3s;
-  width: 70%;
+  width: 98%;
   font-size: 20px;
   border-radius: 5px;
   border: 1px solid rgb(207, 20, 176);
-  padding: 6px;
-  margin: 6px;
-
+  padding: 10px;
+  margin: 10px;
 }
 
 button:hover {
