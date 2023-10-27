@@ -12,15 +12,17 @@ export class TokenGuardOwner implements CanActivate {
 
    canActivate(): boolean {
     const token:any = localStorage.getItem('token')
-    const tokenDesencripted:any  = decodeToken(token)
-
-    if (tokenDesencripted.user.role === 'Dueño' || tokenDesencripted.user.role === 'Empleado') {
-      console.log(tokenDesencripted.role)
-      return true;
+    if(token !== null){
+      const tokenDesencripted:any  = decodeToken(token)
+      if (tokenDesencripted.user.role === 'Dueño' || tokenDesencripted.user.role === 'Empleado') {
+        return true;
+      } else {
+        this.router.navigate(['./warning']);
+        return false;
+      }
     } else {
-      this.router.navigate(['/']);
+      this.router.navigate(['./warning']);
       return false;
     }
   }
-
 }
