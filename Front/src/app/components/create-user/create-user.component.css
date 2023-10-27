@@ -12,7 +12,7 @@ label {
 }
 
 input, select {
-  
+  color: white;
   width: 70%; /* Ancho del campo al 100% del contenedor */
   padding: 10px; /* Espaciado interno */
   border: 2px solid #ff69b4; /* Borde rosa */
