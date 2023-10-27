@@ -34,6 +34,18 @@
             </span>
             Panel de dueño
         </a></li>
+        <li><a href="inventory" *ngIf="isLoggedIn && isLoggedInEmployee">
+          <span class="material-symbols-outlined">
+            deceased
+            </span>
+            Inventario
+        </a></li>
+        <li><a href="sales" *ngIf="isLoggedIn && isLoggedInEmployee">
+          <span class="material-symbols-outlined">
+            shopping_cart
+            </span>
+            Ventas
+        </a></li>
         <!-- Se define un enlace para iniciar sesión -->
         <li><a href="login" *ngIf="!isLoggedIn">
             Iniciar Sesion
