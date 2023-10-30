@@ -8,6 +8,8 @@
         <th>ID</th>
         <th>Producto</th>
         <th>Cantidad</th>
+        <th>Precio Unidad</th>
+        <th>Precio total</th>
         <th>Proveedor</th>
         <th>¿Está activo?</th>
         <th>Acción</th>
@@ -18,6 +20,8 @@
         <td>{{ inventory.inventoryid }}</td>
         <td>{{ inventory.productName }}</td>
         <td>{{ inventory.quantity }}</td>
+        <td>{{ inventory.priceProduct }}</td> <!-- Mostrar el precio del producto -->
+        <td>{{ inventory.priceQuantity }}</td> <!-- Mostrar el precio total del producto -->
         <td>{{ inventory.providerName }}</td>
         <td>{{ inventory.state }}</td>
         <td>
