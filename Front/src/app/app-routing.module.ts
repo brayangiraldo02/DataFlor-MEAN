@@ -22,6 +22,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { MyInventoryComponent } from './components/my-inventory/my-inventory.component';
 import { CreateInventoryComponent } from './components/create-inventory/create-inventory.component';
+import { SalesComponent } from './components/sales/sales.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'product/create', component: CreateProductComponent, canActivate: [TokenGuardBoss]},
   { path: 'inventories', component: InventoryComponent, canActivate: [TokenGuardAdmin]},
   { path: 'my-inventories', component: MyInventoryComponent, canActivate: [TokenGuardFlowershop]},
-  { path: 'inventory/create', component: CreateInventoryComponent, canActivate: [TokenGuardOwner]}
+  { path: 'inventory/create', component: CreateInventoryComponent, canActivate: [TokenGuardOwner]},
+  { path: 'sale', component: SalesComponent, canActivate: [TokenGuardFlowershop]}
 ];
 
 @NgModule({

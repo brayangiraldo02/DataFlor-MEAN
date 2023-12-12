@@ -33,6 +33,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { CreateInventoryComponent } from './components/create-inventory/create-inventory.component';
 import { MyInventoryComponent } from './components/my-inventory/my-inventory.component';
+import { SalesComponent } from './components/sales/sales.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MyInventoryComponent } from './components/my-inventory/my-inventory.com
     CreateProductComponent,
     InventoryComponent,
     CreateInventoryComponent,
-    MyInventoryComponent
+    MyInventoryComponent,
+    SalesComponent
   ],
   imports: [
     BrowserModule,
